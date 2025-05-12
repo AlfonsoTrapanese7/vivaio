@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -49,14 +49,14 @@
             <div class=" container-fluid">
                 <!-- Logo and Company Name -->
                 <div class="navbar-brand d-flex align-items-center" href="#">
-                    <img src="Bellsprout Garden.jpg" alt="Company Logo" class="d-inline-block align-text-top me-3">
+                    <img th:src="@{images/BellsproutGarden.jpg}" alt="Company Logo" class="d-inline-block align-text-top me-3">
                 </div>
 
                 <!-- Navigation Buttons -->
                 <div class="navbar-nav ms-auto ">
-                    <a href="#" class="btn btn-primary me-5 navigation-button">Home</a>
-                    <a href="#" class="btn btn-success me-5 navigation-button"> Plant catalogue</a>
-                    <a href="#" class="btn btn-danger me-5 navigation-button">Tool catalogue</a>
+                    <a th:href="@{/}" class="btn btn-primary me-5 navigation-button">Home</a>
+                    <a th:href="@{/plant_catalogue}" class="btn btn-success me-5 navigation-button">Plant catalogue</a>
+                    <a th:href="@{/tool_catalogue}" class="btn btn-danger me-5 navigation-button">Tool catalogue</a>
                 </div>
             </div>
         </nav>
@@ -74,21 +74,21 @@
         </div>
         <div class="carousel-inner" style="height: 400px">
             <div class="carousel-item active">
-                <img src="01.jpg" class="d-block w-100" alt="...">
+                <img th:src="@{images/01.jpg}" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block" style="top: 290px">
                     <h5>First slide label</h5>
                     <p>Some representative placeholder content for the first slide.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="02.jpg" class="d-block w-100" alt="...">
+                <img th:src="@{images/02.jpg}" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block" style="top: 290px">
                     <h5>Second slide label</h5>
                     <p>Some representative placeholder content for the second slide.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="03.jpg" class="d-block w-100" alt="...">
+                <img th:src="@{images/03.jpg}" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block" style="top: 290px">
                     <h5>Third slide label</h5>
                     <p>Some representative placeholder content for the third slide.</p>
@@ -111,7 +111,7 @@
         <div class="product-card">
             <!--  <h2 class="mb-3">Product 1</h2> -->
             <div class="d-flex align-items-center">
-                <img src="01.jpg" alt="Product 1" class="product-image me-4 rounded">
+                <img th:src="@{images/01.jpg}" alt="Product 1" class="product-image me-4 rounded">
                 <!--
                          <p class="flex-grow-1">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -151,7 +151,7 @@
         <div class="product-card">
             <!--  <h2 class="mb-3">Product 1</h2> -->
             <div class="d-flex align-items-center">
-                <img src="01.jpg" alt="Product 1" class="product-image me-4 rounded">
+                <img th:src="@{images/02.jpg}" alt="Product 1" class="product-image me-4 rounded">
                 <!--
                          <p class="flex-grow-1">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
