@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vivavio - Cursore Personalizzato con Effetto Vento</title>
+  <style>
+    /* Imposta uno sfondo chiaro per il sito */
+    body {
+      background-color: #4a5f55;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+      /* Assicurati che il cursore non esca dai bordi */
+    }
+
+    /* Disabilita completamente il cursore di sistema */
+    * {
+      cursor: none !important;
+      /* Disabilita il cursore di sistema */
+    }
+
+    /* Animazione per l'effetto di "seguire" il cursore con un movimento fluido */
+    #cursor {
+      position: fixed;
+      pointer-events: none;
+      width: 30px;
+      /* Imposta la larghezza del cursore */
+      height: 30px;
+      /* Imposta l'altezza del cursore */
+      background-image: url('/leaf_cursor_img.png');
+      /* Sostituisci con il percorso dell'immagine del tuo cursore */
+      background-size: contain;
+      background-repeat: no-repeat;
+      z-index: 9999;
+      transition: transform 0.1s ease-in-out;
+    }
+
+    /* Effetto di crescita per gli elementi interattivi */
+    .interactive {
+      position: relative;
+      display: inline-block;
+      font-size: 18px;
+      color: #4CAF50;
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 2px solid #4CAF50;
+      border-radius: 8px;
+      background-color: transparent;
+      transition: all 0.3s ease;
+    }
+
+    .interactive:hover {
+      transform: scale(1.1);
+      /* L'elemento "cresce" al passaggio del cursore */
+      color: white;
+      background-color: #4CAF50;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Stile per le particelle di vento */
+    .particle {
+      position: absolute;
+      border-radius: 50%;  /* Particella circolare */
+      animation: float 1.5s infinite ease-in-out;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.6;
+    }
+
+    /* Animazione per il movimento delle particelle di vento */
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+      }
+
+      50% {
+        transform: translate(10px, -15px) rotate(180deg);
+        opacity: 0.6;
+      }
+
+      100% {
+        transform: translate(-5px, 5px) rotate(360deg);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Testing stuff!</h1>
+
+  <button class="interactive">Plants!</button>
+  <a href="#" class="interactive">More about plants!</a>
+
+  <script>
+    // Crea l'elemento cursore personalizzato
+    const cursor = document.createElement('div');
+    cursor.id = 'cursor';
+    document.body.appendChild(cursor);
+
+    // Funzione per tracciare il cursore e farlo seguire il movimento
+    document.addEventListener('mousemove', (e) => {
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+
+      // Movimento fluido del cursore
+      cursor.style.left = `${mouseX - cursor.offsetWidth / 2}px`;
+      cursor.style.top = `${mouseY - cursor.offsetHeight / 2}px`;
+
+      // Aggiungi particelle di vento dietro al cursore
+      createWindParticles(mouseX, mouseY);
+    });
+
+    // Funzione per generare un gradiente casuale tra due colori
+    function getRandomGradient() {
+      // Array di coppie di colori per i gradienti
+      const gradients = [
+        'linear-gradient(45deg, rgb(255, 0, 0), rgb(255, 255, 0))',    // Rosso a Giallo
+        'linear-gradient(45deg, rgb(255, 0, 0), rgb(0, 0, 255))',      // Rosso a Blu
+        'linear-gradient(45deg, rgb(255, 0, 0), rgb(0, 255, 0))',      // Rosso a Verde
+        'linear-gradient(45deg, rgb(255, 0, 0), rgb(255, 215, 0))',    // Rosso a Oro
+        'linear-gradient(45deg, rgb(255, 255, 0), rgb(0, 0, 255))',    // Giallo a Blu
+        'linear-gradient(45deg, rgb(255, 255, 0), rgb(0, 255, 0))',    // Giallo a Verde
+        'linear-gradient(45deg, rgb(255, 255, 0), rgb(255, 215, 0))',  // Giallo a Oro
+        'linear-gradient(45deg, rgb(0, 255, 0), rgb(0, 0, 255))',      // Verde a Blu
+        'linear-gradient(45deg, rgb(0, 255, 0), rgb(255, 215, 0))',    // Verde a Oro
+        'linear-gradient(45deg, rgb(255, 215, 0), rgb(0, 0, 255))',    // Oro a Blu
+        'linear-gradient(45deg, rgb(255, 215, 0), rgb(0, 255, 0))'     // Oro a Verde
+      ];
+
+      // Scegli un gradiente casuale dall'array
+      const randomIndex = Math.floor(Math.random() * gradients.length);
+      return gradients[randomIndex];
+    }
+
+    // Funzione per creare particelle di vento dietro al cursore
+    function createWindParticles(x, y) {
+      // Limita il numero di particelle create
+      if (Math.random() > 0.9) { // Solo 1 particella ogni 10 movimenti
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        document.body.appendChild(particle);
+
+        // Imposta la dimensione casuale della particella
+        const size = Math.random() * 5 + 1; // Dimensioni
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+
+        // Assegna un gradiente casuale alla particella
+        particle.style.background = getRandomGradient();  // Gradiente casuale per ogni particella
+
+        // Imposta la posizione iniziale della particella vicino al cursore
+        particle.style.left = `${x + (Math.random() - 0.5) * 40}px`; // Movimento casuale rispetto al cursore
+        particle.style.top = `${y + (Math.random() - 0.5) * 40}px`;
+
+        // Rimuovi la particella dopo un tempo (per evitare di accumularle nella memoria)
+        setTimeout(() => {
+          particle.remove();
+        }, 1500); // La particella viene rimossa dopo 1.5 secondi
+      }
+    }
+
+    // Effetto di crescita al passaggio sopra gli elementi interattivi
+    const interactiveElements = document.querySelectorAll('.interactive');
+    interactiveElements.forEach((element) => {
+      element.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'scale(1.5)'; // Cresce quando sopra l'elemento
+      });
+
+      element.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'scale(1)'; // Torna alla dimensione normale
+      });
+    });
+  </script>
+</body>
+
+</html>
