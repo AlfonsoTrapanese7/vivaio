@@ -17,88 +17,60 @@
   <style>
     header {
       border: solid 1px black;
-      width: 100%;
       height: 200px;
     }
 
+    /*
     #container {
       border: solid 1px black;
       width: 100%;
       height: auto;
     }
+*/
+    img {
+      height: 100%;
+    }
 
+    #catPiante {}
+
+    #catAttrezzi {}
+
+    #nuoviArrivi {}
 
     #corpo {
       border: solid 1px black;
       width: 80%;
       height: 550px;
+      margin-top: 200px;
       margin-left: auto;
       margin-right: auto;
-      float: center;
-      background-color: rgb(223, 153, 153);
+      background-color: rgb(152, 194, 120);
     }
-
-    /*
-    #catPiante {
-      background-color: rgb(169, 238, 169);
-      border: solid 1px black;
-      width: 40%;
-      height: 150px;
-      margin-top: 50px;
-      margin-left: 20px;
-      float: left;
-      position: relative;
-    }
-
-    #catAttrezzi {
-      background-color: grey;
-      border: solid 1px black;
-      width: 40%;
-      height: 150px;
-      margin-top: 50px;
-      margin-left: 20px;
-      position: relative;
-      float: left;
-    }
-
-    #nuoviArrivi {
-      background-color: rgb(141, 141, 240);
-      border: solid 1px black;
-      width: 40%;
-      height: 500px;
-      position: relative;
-      float: right;
-      margin-top: 20px;
-      margin-right: 20px;
-    }
-
-*/
 
     footer {
       border: solid 1px black;
-      width: 100%;
       height: 200px;
-      bottom: 0%;
-      position: fixed;
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <header class="col-12"> Logo Sito </header>
+      <header class="col-12 mt-auto position-fixed top-0 w-100" style="background-color: rgb(234,225,208)">
+        <img class="img" src="/Bellsprout Garden.jpg">
+      </header>
     </div>
 
 
-    <div id="corpo" class="row"> corpo
+    <div id="corpo" class="row">
       <div class="col-6">
         <div class="row">
-          <div id="catPiante" class="col-12"> Catalogo piante </div>
+          <div id="catPiante" class="col-12 bg-success"> Catalogo piante </div>
         </div>
         <div class="row">
           <div id="catAttrezzi" class="col-12"> Catalogo attrezzi </div>
-        </div>    
+        </div>
       </div>
 
       <div class="col-6" id="nuoviArrivi"> Novità </div>
@@ -106,9 +78,89 @@
 
 
 
-
-    <footer> Info Generiche </footer>
+    <div class="row">
+      <footer class="col-12 mt-auto position-fixed bottom-0 w-100" style="background-color: rgb(234,225,208)"> Info e contatti</footer>
+    </div>
   </div>
 </body>
 
-</html>
+<!--
+<style>
+    .logo {
+      width: 80px;
+      height: 80px;
+      border: 2px solid black;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 15px;
+    }
+    .box {
+      border: 2px solid maroon;
+      padding: 15px;
+      background-color: #fff;
+      min-height: 150px;
+    }
+    .orange-border {
+      border: 2px solid orange;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    footer {
+      background-color: #f8f9fa;
+      padding: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container my-4">
+  <div class="d-flex align-items-center">
+    <div class="logo">logo</div>
+    <div>
+      <h1 class="mb-0">Nome Vivaio</h1>
+      <p class="text-muted mb-0">Slogan</p>
+    </div>
+  </div>
+</div>
+
+<div class="container orange-border">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box mb-3">
+        <h4>Elenco dettagliato piante</h4>
+      </div>
+      <div class="box">
+        <h4>Elenco dettagliato attrezzi</h4>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="box h-100">
+        <h4>Promo e novità</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row text-start text-md-center">
+      <div class="col-md-4 mb-3">
+        <strong>Indirizzo</strong><br>
+        <a href="#">Mappa</a>
+      </div>
+      <div class="col-md-4 mb-3">
+        <strong>Contatti</strong><br>
+        Tel: <br>
+        Mail: <br>
+        Social:
+      </div>
+      <div class="col-md-4 text-md-end">
+        <small>admin</small>
+      </div>
+    </div>
+  </div>
+</footer>
+-->
