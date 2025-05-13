@@ -19,4 +19,11 @@ public class NurseryServiceImpl implements NurseryService{
         return (List<Nursery>) nurseryRepository.findAll();    
     }
 
+    @Override
+    public Nursery getPlant(Integer id) {
+        return nurseryRepository.findById(id).get();
+    }
+
+    
+
 }

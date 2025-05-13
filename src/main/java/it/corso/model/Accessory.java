@@ -32,7 +32,7 @@ public class Accessory {
     private String size;
     private String brand;
     private String material;
-    private int isActive;
+    private int isActive; // 0 = false; 1 = true
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "id_category", referencedColumnName = "id")
     private Category category;

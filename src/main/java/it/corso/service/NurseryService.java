@@ -6,4 +6,5 @@ import it.corso.model.Nursery;
 
 public interface NurseryService {
     List<Nursery> getAllNursery();
+    Nursery getPlant(Integer id);
 }
