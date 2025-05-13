@@ -74,8 +74,26 @@
             </div>
         </nav>
     </header>
+
     <!-- Details -->
-    
+    <div class="row mt-4 justify-content-center">
+        <div class="col-lg-4">
+            <img th:if="${plant.photo == null}" th:src="@{${plant.}}" alt="Immagine Articolo" class="img-fluid rounded-start" style="max-width: 100%; height: auto;">
+        </div>
+        <div class="col-lg-4">
+            <ul class="list-group mt-4">
+                <li class="list-group-item" th:text="|Marchio: ${articolo.marchio}|">Marchio</li>
+                <li class="list-group-item" th:text="|Modello: ${articolo.modello}|">Modello</li>
+                <li class="list-group-item" th:text="|Sistema Operativo: ${articolo.sistemaOperativo}|">Sistema Operativo
+                </li>
+                <li class="list-group-item" th:text="|Memoria: ${articolo.memoria}|">Memoria</li>
+                <li class="list-group-item"
+                    th:text="|Prezzo: ${#numbers.formatDecimal(articolo.prezzo,0,'POINT',2,'COMMA')} Euro|">Prezzo</li>
+                <li class="list-group-item" th:text="${articolo.descrizione}">Descrizione</li>
+            </ul>
+            <h4 class="mt-4 text-center"><a class="btn btn-outline-primary">Aggiungi al Carrello</a></h4>
+        </div>
+    </div>
     
 
     <!-- Footer -->
