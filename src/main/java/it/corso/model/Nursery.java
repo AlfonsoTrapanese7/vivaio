@@ -32,7 +32,7 @@ public class Nursery {
     private String origin;
     private String season;
     private String watering;
-    private int isActive;
+    private int isActive; // 0 = false; 1 = true
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "id_type", referencedColumnName = "id")
     private Type type;
