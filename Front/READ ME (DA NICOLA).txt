@@ -1,0 +1,3 @@
+Ho lasciato una bozza di codice per cursore personalizzato ed effetto particellare. 
+Al momento se apro con doppio click dal documento vedo le particelle ma non il cursore, mentre dal go live di visual studio code funziona tutto
+C'è roba da rivedere, come i colori, ma è un'idea che volevo proporvi
