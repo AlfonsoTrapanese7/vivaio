@@ -13,9 +13,10 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background-color: #8CBD8C;
-            font-family:sans-serif;
+            font-family: sans-serif;
+            background-color:#61b161;
         }
+
 
         img {
             width: 40%;
@@ -119,63 +120,115 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    <!-- Left Column -->
-    <div class="col-md-6 p-4">
-        <div class="product-card">
-            <!--  <h2 class="mb-3">Product 1</h2> -->
-            <div class="d-flex align-items-center">
-                <img th:src="@{images/01.jpg}" alt="Product 1" class="product-image me-4 rounded">
-                <!--
-                         <p class="flex-grow-1">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.
-                            Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
-                        </p> -->
+
+    <div class="row mt-5" style="width: 80%; align-self: center;">
+        <!-- Left Column -->
+        <div class="col-xl-6 p-4">
+            <div class="product-card">
+                <div class="d-flex align-items-center">
+                    <img th:src="@{images/01.jpg}" alt="Product 1" class="product-image me-4 rounded"
+                        style="width: 100%; height: auto;">
+
+                </div>
+            </div>
+
+            <div class="product-card">
+                <h2 class="mb-3" style="font-weight: bolder;">Life finds a way</h2>
+                <div class="d-flex align-items-center">
+
+                    <p class="flex-grow-1">
+                    <section>
+
+                        <p>We opened our <strong>plant nursery</strong> with a clear mission: to reconnect people with
+                            nature and provide them with the essential <strong>tools to cultivate life</strong>, both in
+                            their homes and in the broader environment. There’s something inherently rewarding about
+                            watching plants grow, and we wanted to make it easier for everyone to experience that joy.
+                        </p>
+                        <p>With a strong focus on <strong>sustainability</strong> and <strong>education</strong>, our
+                            nursery is dedicated to supporting the local ecosystem by offering native plants that help
+                            foster <strong>biodiversity</strong>. These plants play a vital role in creating a balanced
+                            environment and promoting a healthy, thriving ecosystem.</p>
+                        <p>In a world that can sometimes feel disconnected from the earth, we created a space where
+                            <em>life truly finds a way to thrive</em>. Join us in our mission to nurture and protect the
+                            planet, one plant at a time.
+                        </p>
+                    </section>
+
+                    </p>
+                </div>
             </div>
         </div>
 
-        <div class="product-card">
-            <h2 class="mb-3">Scritta 2</h2>
-            <div class="d-flex align-items-center">
-                <!--  <img src="01.jpg" alt="Product 1" class="product-image me-4 rounded" alt="Product 2" class="product-image me-4 rounded">  -->
-                <p class="flex-grow-1">
-                    Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
-                    Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
+        <!-- Right Column -->
+        <div class="col-xl-6 p-4">
+            <div class="product-card">
+                <h2 class="mb-3" style="font-weight: bolder;">Welcome</h2>
+                <div class="d-flex align-items-center">
+                    <p class="flex-grow-1">
+                    <section>
+                        <p>Welcome to our <strong>website</strong>! Explore our wide range of high-quality
+                            <strong>gardening tools</strong>, <strong>plants</strong>, <strong>flowers</strong>,
+                            <strong>trees</strong>, and everything you need to create your perfect garden. Whether
+                            you're a seasoned gardener or just starting out, we have everything from essential tools to
+                            unique plants, all carefully selected to help you grow and nurture your <strong>green
+                                space</strong>.
+                        </p>
+                        <p>Our products are designed to inspire your creativity and make gardening a true joy. Let us
+                            help you bring your <strong>garden dreams</strong> to life with the right tools and plants
+                            that suit your style and needs.</p>
+                        <p>And if you're nearby, come visit our store in <strong>Biancavilla</strong>—we'd love to
+                            welcome you in person and assist you in finding exactly what you need. We can't wait to see
+                            you!</p>
+                    </section>
+
+
+                    </p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="d-flex align-items-center">
+                    <img th:src="@{images/02.jpg}" alt="Product 1" class="product-image me-4 rounded"
+                        style="width: 100%; height: auto;">
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Right Column -->
-    <div class="col-md-6 p-4">
-        <div class="product-card">
-            <h2 class="mb-3">Prodotto 2</h2>
-            <div class="d-flex align-items-center">
-                <!--  <img src="01.jpg" alt="Product 1" class="product-image me-4 rounded" alt="Product 2" class="product-image me-4 rounded">  -->
-                <p class="flex-grow-1">
-                    Vivamus hendrerit arcu sed erat molestie vehicula.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nullam in dui mauris. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
-                </p>
+    <div class="row mt-5" style="width: 80%; align-self: center;">
+        <div class="col-xl-6 p-4">
+            <div class="product-card">
+                <div class="d-flex align-items-center">
+                    <img th:src="@{images/02.jpg}" alt="Product 1" class="product-image me-4 rounded"
+                        style="width: 100%; height: auto;">
+                </div>
             </div>
         </div>
+        <div class="col-xl-6 p-4">
+            <div class="product-card">
+                <h2 class="mb-3" style="font-weight: bolder;">Our Commitment to Quality and Service</h2>
+                <div class="d-flex align-items-center">
+                    <p class="flex-grow-1">
+                    <section>
+                        <p>Every plant, flower, and gardening tool in our <strong>catalog</strong> is carefully selected
+                            to ensure the highest quality and customer satisfaction. We pride ourselves not just on
+                            offering products, but on providing <strong>solutions</strong> that help bring your
+                            gardening dreams to life. Whether you're searching for the perfect tool to tend to your
+                            garden or seeking a unique plant to brighten your outdoor space, our <strong>experienced
+                                team</strong> is always ready to provide <em>personalized advice</em> and
+                            recommendations.</p>
+                        <p>We understand that every garden is unique, which is why we are committed to helping you find
+                            exactly what you need—whether you're shopping <strong>online</strong> or visiting us in
+                            person at our store. Our goal is to be your trusted partner in gardening, supporting you at
+                            every step as you create a beautiful, thriving green space. Trust us to help you cultivate
+                            your perfect garden.</p>
+                    </section>
 
-        <div class="product-card">
-            <!--  <h2 class="mb-3">Product 1</h2> -->
-            <div class="d-flex align-items-center">
-                <img th:src="@{images/02.jpg}" alt="Product 1" class="product-image me-4 rounded">
-                <!--
-                         <p class="flex-grow-1">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.
-                            Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
-                        </p> -->
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-    </div>
-
 
     </main>
 
