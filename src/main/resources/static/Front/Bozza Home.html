@@ -15,6 +15,10 @@
       min-height: 100vh;
       font-family: sans-serif;
       background-color: #61b161;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
     }
 
 
@@ -47,6 +51,9 @@
       width: 100%;
     }
 
+
+
+    /* Disabilita completamente il cursore di sistema */
     * {
       cursor: none !important;
       /* Disabilita il cursore di sistema */
@@ -122,7 +129,6 @@
 </head>
 
 <body>
-
   <!-- Header -->
   <header style="background-color: rgba(234,225,210,255)">
 
@@ -148,7 +154,6 @@
       </div>
     </nav>
   </header>
-
 
   <!-- Main Content -->
   <div id="carouselExampleCaptions" class="carousel slide">
@@ -413,9 +418,10 @@
           particle.remove();
         }, 1500); // La particella viene rimossa dopo 1.5 secondi
       }
+    }
 
-      // Effetto di crescita al passaggio sopra gli elementi interattivi
-    } const interactiveElements = document.querySelectorAll('.interactive');
+    // Effetto di crescita al passaggio sopra gli elementi interattivi
+    const interactiveElements = document.querySelectorAll('.interactive');
     interactiveElements.forEach((element) => {
       element.addEventListener('mouseenter', () => {
         cursor.style.transform = 'scale(1.5)'; // Cresce quando sopra l'elemento
@@ -424,8 +430,7 @@
       element.addEventListener('mouseleave', () => {
         cursor.style.transform = 'scale(1)'; // Torna alla dimensione normale
       });
-    });
-  </script>
+    });</script>
 </body>
 
 </html>
