@@ -84,6 +84,8 @@
                   <h5 th:text="${plant.name}" class="card-title"></h5>
                   <p th:text="${plant.description}" class="card-text"></p>
                   <p th:text="|Price: ${#numbers.formatDecimal(plant.price,0,'POINT',2,'COMMA')} Euro|" class="card-text"></p>
+                  <p th:text="|Quantity: ${plant.quantity}|" class="card-text"></p>
+                  <p th:text="|Date of Restock: ${#temporals.format(plant.dateOfRestock, 'dd/MM/yyyy')}|" class="card-text"></p>
                   <a th:href="@{/plant_details(id=${plant.id})}" class="btn btn-primary">More Information</a>
                 </div>
               </div>
