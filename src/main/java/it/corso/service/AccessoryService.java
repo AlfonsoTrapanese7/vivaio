@@ -7,4 +7,5 @@ import it.corso.model.Accessory;
 public interface AccessoryService {
 
     List<Accessory> getAllAccessory();
+    Accessory getAccessoryById(Integer id);
 }
