@@ -19,6 +19,11 @@ public class AccessoryServiceImpl implements AccessoryService {
         return (List<Accessory>) accessoryRepository.findAll();
     }
 
+    @Override
+    public Accessory getAccessoryById(Integer id) {
+        return accessoryRepository.findById(id).get();
+    }
+
 
 
 }
