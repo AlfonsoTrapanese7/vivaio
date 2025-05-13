@@ -75,7 +75,27 @@
         </nav>
     </header>
 
-    
+    <!-- Details -->
+    <div class="row mt-4 justify-content-center">
+        <div class="col-lg-4">
+            <img th:if="${plant.photo != null}" th:src="@{${plant.photo}}" alt="Plant Image" class="img-fluid rounded-start" style="max-width: 100%; height: auto;">
+            <img th:if="${plant.photo == null}" th:src="@{images/02.jpg}" alt="Plant Image" class="img-fluid rounded-start" style="max-width: 100%; height: auto;">
+        </div>
+        <div class="col-lg-4">
+            <h5 th:text="${plant.name}"></h5>
+            <ul class="list-group mt-4">
+                <li class="list-group-item" th:text="|Price: ${#numbers.formatDecimal(plant.price,0,'POINT',2,'COMMA')} Euro|"></li>
+                <li th:if="${plant.color != null}" class="list-group-item" th:text="|Color: ${plant.color}|"></li>
+                <li class="list-group-item" th:text="|Quantity: ${plant.quantity}|"></li>
+                <li th:if="${plant.dateOfRestock != null}" class="list-group-item" th:text="|Date of Restock: ${#temporals.format(plant.dateOfRestock, 'dd/MM/yyyy')}|"></li>
+                <li class="list-group-item" th:text="|Origin: ${plant.origin}|"></li>
+                <li class="list-group-item" th:text="|Season: ${plant.season}|"></li>
+                <li class="list-group-item" th:text="|Watering:  ${plant.watering}|"></li>
+                
+            </ul>
+            
+        </div>
+    </div>
     
 
     <!-- Footer -->

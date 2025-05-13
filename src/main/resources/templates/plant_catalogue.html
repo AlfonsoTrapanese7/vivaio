@@ -77,13 +77,15 @@
     <!-- Cards -->
     <div class="container">
         <div class="row">
-            <div th:each="plant : ${nurseryPlants}" class="card m-3" style="width: 18rem;">
+            <div th:each="plant : ${nurseryPlants}" th:if="${plant.isActive != 0}" class="card m-3" style="width: 18rem;">
                 <img th:if="${plant.photo != null}" th:src="@{${plant.photo}}" class="card-img-top" alt="Plant image">
                 <img th:if="${plant.photo == null}" th:src="@{images/02.jpg}" class="card-img-top" alt="Plant image">
                 <div class="card-body">
                   <h5 th:text="${plant.name}" class="card-title"></h5>
                   <p th:text="${plant.description}" class="card-text"></p>
                   <p th:text="|Price: ${#numbers.formatDecimal(plant.price,0,'POINT',2,'COMMA')} Euro|" class="card-text"></p>
+                  <p th:text="|Quantity: ${plant.quantity}|" class="card-text"></p>
+                  <p th:if="${plant.dateOfRestock != null}" th:text="|Date of Restock: ${#temporals.format(plant.dateOfRestock, 'dd/MM/yyyy')}|" class="card-text"></p>
                   <a th:href="@{/plant_details(id=${plant.id})}" class="btn btn-primary">More Information</a>
                 </div>
               </div>
