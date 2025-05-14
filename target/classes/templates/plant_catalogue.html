@@ -53,6 +53,9 @@
         .navigation-button {
             width: 160px;
             height: auto;
+            background-color: #bacac0;
+            color:rgba(59, 26, 9, 0.742); 
+            font-weight: bold;
 
         }
 
@@ -82,30 +85,31 @@
             transform: scale(1.05);
             box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
         }
+
     </style>
 </head>
 
 <body onload="initMap()">
     <!-- Header -->
-    <header style="background-color: rgba(234,225,210,255)">
+    <header style="background-color: rgba(234,225,210,255); border-bottom: 2px solid rgba(175, 111, 80, 0.742) ;">
 
         <nav class="navbar navbar-expand-lg navbar-light container">
             <div class=" container-fluid">
                 <!-- Logo and Company Name -->
                 <div class="navbar-brand d-flex align-items-center" href="#">
                     <img th:src="@{images/BellsproutGarden.jpg}" alt="Company Logo"
-                        class="d-inline-block align-text-top me-3" style="border:1px double rgba(175, 111, 80, 0.742);">
+                        class="d-inline-block align-text-top me-3" style="border:1px double rgba(175, 111, 80, 0.742); border-radius: 20px;">
                 </div>
 
                 <!-- Navigation Buttons -->
                 <div class="navbar-nav ms-auto ">
                     <a th:href="@{/}" class="btn me-5 navigation-button"
-                        style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742); font-weight: bold;">Home</a>
+                        >Home</a>
                     <a th:href="@{/plant_catalogue}" class="btn me-5 navigation-button"
-                        style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Plants
+                        >Plants
                         catalogue</a>
                     <a th:href="@{/tool_catalogue}" class="btn me-5 navigation-button"
-                        style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Tools
+                        >Tools
                         catalogue</a>
                 </div>
             </div>
@@ -115,9 +119,9 @@
     <div class="container">
         <div class="row">
             <div th:each="plant : ${nurseryPlants}" th:if="${plant.isActive != 0}" class="card m-3 plant-card"
-                style="width: 18rem;">
-                <img th:if="${plant.photo != null}" th:src="@{${plant.photo}}" class="card-img-top" alt="Plant image">
-                <img th:if="${plant.photo == null}" th:src="@{images/02.jpg}" class="card-img-top" alt="Plant image">
+                style="width: 18rem; border-radius: 20px;">
+                <img th:if="${plant.photo != null}" th:src="@{${plant.photo}}" class="card-img-top" alt="Plant image" style="border-radius: 20px;">
+                <img th:if="${plant.photo == null}" th:src="@{images/02.jpg}" class="card-img-top" alt="Plant image" style="border-radius: 20px;">
                 <div class="card-body">
                     <h5 th:text="${plant.name}" class="card-title" style="font-weight: bold; text-align: center;"></h5>
                     <p th:text="${plant.description}" class="card-text"></p>
@@ -125,7 +129,10 @@
                         <span class="price-label">Price:</span>
                         <span th:text="${#numbers.formatDecimal(plant.price,0,'POINT',2,'COMMA')}">0.00</span> Euro
                     </p>
-                    <p th:text="|Quantity: ${plant.quantity}|" class="card-text"></p>
+                    <p class="card-text">
+                        <span class="quantity-label">Quantity:</span>
+                        <span th:text="${plant.quantity}">0</span>
+                    </p>
                     <p th:if="${plant.dateOfRestock != null}"
                         th:text="|Date of Restock: ${#temporals.format(plant.dateOfRestock, 'dd/MM/yyyy')}|"
                         class="card-text"></p>
@@ -137,7 +144,7 @@
 
 
     <!-- Footer -->
-    <footer style="background-color:rgba(234,225,210,255); color:rgba(59, 26, 9, 0.742);">
+    <footer style="background-color:rgba(234,225,210,255); color:rgba(59, 26, 9, 0.742); border-top: 2px solid rgba(175, 111, 80, 0.742) ;">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 mt-5">
