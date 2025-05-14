@@ -37,7 +37,7 @@
             flex-direction: column;
             min-height: 100vh;
             background-color: #8CBD8C;
-            font-family:sans-serif;
+            font-family: sans-serif;
         }
 
         img {
@@ -68,10 +68,19 @@
             margin-top: 10%;
             width: 100%;
         }
+
+        .tool-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+        }
     </style>
 </head>
 
-<body onload="initMap()"> 
+<body onload="initMap()">
     <!-- Header -->
     <header style="background-color: rgba(234,225,210,255)">
 
@@ -100,24 +109,27 @@
     <!-- Cards -->
     <div class="container">
         <div class="row">
-            <div th:each="tool : ${tools}" th:if="${tool.isActive != 0}" class="card m-3" style="width: 18rem;">
+            <div th:each="tool : ${tools}" th:if="${tool.isActive != 0}" class="card m-3 tool-card" style="width: 18rem;">
                 <img th:if="${tool.photo != null}" th:src="@{${tool.photo}}" class="card-img-top" alt="Tool image">
                 <img th:if="${tool.photo == null}" th:src="@{images/02.jpg}" class="card-img-top" alt="Tool image">
                 <div class="card-body">
-                  <h5 th:text="${tool.name}" class="card-title"></h5>
-                  <p th:text="${tool.description}" class="card-text"></p>
-                  <p th:text="|Price: ${#numbers.formatDecimal(tool.price,0,'POINT',2,'COMMA')} Euro|" class="card-text"></p>
-                  <p th:text="|Quantity: ${tool.quantity}|" class="card-text"></p>
-                  <p th:if="${tool.dateOfRestock != null}" th:text="|Date of Restock: ${#temporals.format(tool.dateOfRestock, 'dd/MM/yyyy')}|" class="card-text"></p>
-                  <a th:href="@{/tool_details(id=${tool.id})}" class="btn btn-primary">More Information</a>
+                    <h5 th:text="${tool.name}" class="card-title"></h5>
+                    <p th:text="${tool.description}" class="card-text"></p>
+                    <p th:text="|Price: ${#numbers.formatDecimal(tool.price,0,'POINT',2,'COMMA')} Euro|"
+                        class="card-text"></p>
+                    <p th:text="|Quantity: ${tool.quantity}|" class="card-text"></p>
+                    <p th:if="${tool.dateOfRestock != null}"
+                        th:text="|Date of Restock: ${#temporals.format(tool.dateOfRestock, 'dd/MM/yyyy')}|"
+                        class="card-text"></p>
+                    <a th:href="@{/tool_details(id=${tool.id})}" class="btn btn-primary">More Information</a>
                 </div>
-              </div>
+            </div>
         </div>
     </div>
-    
+
 
     <!-- Footer -->
-   <footer style="background-color:rgba(234,225,210,255); color:rgba(59, 26, 9, 0.742);">
+    <footer style="background-color:rgba(234,225,210,255); color:rgba(59, 26, 9, 0.742);">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 mt-5">
