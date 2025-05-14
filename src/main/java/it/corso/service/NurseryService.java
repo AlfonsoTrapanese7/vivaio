@@ -7,4 +7,5 @@ import it.corso.model.Nursery;
 public interface NurseryService {
     List<Nursery> getAllNursery();
     Nursery getPlant(Integer id);
+    void activateDisableNursery(Integer id, String operation);
 }
