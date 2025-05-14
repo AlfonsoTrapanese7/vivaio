@@ -24,6 +24,16 @@ public class NurseryServiceImpl implements NurseryService{
         return nurseryRepository.findById(id).get();
     }
 
+    @Override
+    public void activateDisableNursery(Integer id, String operation) {
+        if (operation.equals("activate")) {
+            nurseryRepository.activateNursery(id);
+        } else if (operation.equals("disable")) {
+            nurseryRepository.disableNursery(id);
+        }
+
+    }
+
     
 
 }

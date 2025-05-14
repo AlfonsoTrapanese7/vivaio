@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin page</title>
+    <title>Edit Plant Catalogue</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- API GOOGLE MAPS -->
@@ -113,28 +113,40 @@
                 <!-- Navigation Buttons -->
                 <div class="navbar-nav ms-auto ">
                     <a th:href="@{/}" class="btn me-5 navigation-button"
-                        style="background-color: rgba(207, 147, 116, 0.742); color:rgba(59, 26, 9, 0.742); font-weight: bold;">Home</a>
+                        style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742); font-weight: bold;">Home</a>
                     <a th:href="@{/admin_plant}" class="btn me-5 navigation-button"
-                        style="background-color: #61b161; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Edit Plants
+                        style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Edit Plants
                         catalogue</a>
                     <a th:href="@{/admin_tool}" class="btn me-5 navigation-button"
-                        style="background-color: #9c9c9c; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Edit Tools
+                        style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Edit Tools
                         catalogue</a>
-                        <!-- bottone di logout dell'admin (fatelo bello e posizionatelo meglio)-->
-                    <a th:href="@{/admin_page/logout}" class="btn me-5 navigation-button" style="background-color: rgba(207, 147, 116, 0.742); color:rgba(59, 26, 9, 0.742); font-weight: bold;">Logout</a>
                 </div>
             </div>
         </nav>
     </header>
-    <!-- Sezione di tutorial per l'admin(Lavorate Frontendisti!!!)-->
-    <div>
-        Admin main page
-        
-        
+    
+    <div class="row justify-content-center mt-4">
+            <div class="col-10">
+                <h4 class="text-center">Plant Catalogue</h4>
+                <table class="table tabel-striped">
+                    <tr th:each="plant : ${plants}">
+                        <td class="text-center">
+                            <img th:src="@{${plant.photo == null ? 'images/02.jpg' : plant.photo}}" alt="Plant Image" style="max-height: 70px;">
+                        </td>
+                        <td class="align-middle" th:text="${plant.name}"></td>
+                        <td class="align-middle text-end" th:text="|${#numbers.formatDecimal(plant.price,0,'POINT',2,'COMMA')} Euro|"></td>
+                        <td class="align-middle" th:text="${plant.quantity}"></td>
+                        <td th:if="${plant.dateOfRestock != null}" class="align-middle" th:text="${#temporals.format(plant.dateOfRestock, 'dd/MM/yyyy')}"></td>
+                        <td th:if="${plant.dateOfRestock == null}" class="align-middle">Date of restock unassigned</td>
+                        <td class="align-middle text-center" th:text="${plant.isActive == 1 ? 'Active' : 'Disabled'}"></td>
+                        <td class="align-middle text-end">
+                            <a th:if="${plant.isActive == 0}" th:href="@{/admin_plant/activate(id=${plant.id})}" class="btn me-5 navigation-button" style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Activate</a>
+                            <a th:if="${plant.isActive == 1}" th:href="@{/admin_plant/disable(id=${plant.id})}" class="btn me-5 navigation-button" style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Disable</a>
+                        </td>
+                    </tr>
+            </table>
+        </div>
     </div>
-    
-
-    
 
     <!-- Footer -->
     <footer style="background-color:rgba(234,225,210,255); color:rgba(59, 26, 9, 0.742);">
