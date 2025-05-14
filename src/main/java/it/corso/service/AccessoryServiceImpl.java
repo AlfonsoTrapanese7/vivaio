@@ -24,6 +24,15 @@ public class AccessoryServiceImpl implements AccessoryService {
         return accessoryRepository.findById(id).get();
     }
 
+    @Override
+    public void activateDisableAccessory(Integer id, String operation) {
+        if(operation.equals("activate")){
+            accessoryRepository.activateAccessory(id);
+        }else if(operation.equals("disable")){
+            accessoryRepository.disableAccessory(id);
+        }
+    }
+
 
 
 }

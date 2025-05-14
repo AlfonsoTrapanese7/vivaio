@@ -1,0 +1,50 @@
+package it.corso.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import it.corso.model.Accessory;
+import it.corso.service.AccessoryService;
+import jakarta.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
+@Controller
+@RequestMapping("/admin_tool")
+public class AdminToolController {
+
+    @Autowired
+    private AccessoryService accessoryService;
+
+    @GetMapping
+    public String renderPage(Model model) {
+        List<Accessory> tools = accessoryService.getAllAccessory();
+        model.addAttribute("tools", tools);
+        return "admin_tool";
+    }
+
+    @GetMapping("/activate")
+    public String activateTool(@RequestParam Integer id) {
+        accessoryService.activateDisableAccessory(id, "activate");
+        return "redirect:/admin_tool";
+    }
+
+    @GetMapping("/disable")
+    public String disableTool(@RequestParam Integer id) {
+        accessoryService.activateDisableAccessory(id, "disable");
+        return "redirect:/admin_tool";
+    }
+    
+    
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("admin");
+        return "redirect:/";
+    }
+}
