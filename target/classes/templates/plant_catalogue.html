@@ -36,8 +36,14 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background-color: #8CBD8C;
             font-family: sans-serif;
+            background-color: #9fc09f;
+            background-image: url('/images/background02.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+
         }
 
         img {
@@ -60,18 +66,26 @@
             width: 300px;
         }
 
-        .product-card {
-            margin-bottom: 2rem;
-        }
-
         .map {
             margin-top: 10%;
             width: 100%;
         }
+
+        .plant-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #f3f1e9;
+            border: 3px solid rgb(175, 188, 200);
+            padding-top: 1%;
+        }
+
+        .plant-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+        }
     </style>
 </head>
 
-<body onload="initMap()"> 
+<body onload="initMap()">
     <!-- Header -->
     <header style="background-color: rgba(234,225,210,255)">
 
@@ -100,15 +114,17 @@
     <!-- Cards -->
     <div class="container">
         <div class="row">
-            <div th:each="plant : ${nurseryPlants}" th:if="${plant.isActive != 0}" class="card m-3"
+            <div th:each="plant : ${nurseryPlants}" th:if="${plant.isActive != 0}" class="card m-3 plant-card"
                 style="width: 18rem;">
                 <img th:if="${plant.photo != null}" th:src="@{${plant.photo}}" class="card-img-top" alt="Plant image">
                 <img th:if="${plant.photo == null}" th:src="@{images/02.jpg}" class="card-img-top" alt="Plant image">
                 <div class="card-body">
-                    <h5 th:text="${plant.name}" class="card-title"></h5>
+                    <h5 th:text="${plant.name}" class="card-title" style="font-weight: bold; text-align: center;"></h5>
                     <p th:text="${plant.description}" class="card-text"></p>
-                    <p th:text="|Price: ${#numbers.formatDecimal(plant.price,0,'POINT',2,'COMMA')} Euro|"
-                        class="card-text"></p>
+                    <p class="card-text">
+                        <span class="price-label">Price:</span>
+                        <span th:text="${#numbers.formatDecimal(plant.price,0,'POINT',2,'COMMA')}">0.00</span> Euro
+                    </p>
                     <p th:text="|Quantity: ${plant.quantity}|" class="card-text"></p>
                     <p th:if="${plant.dateOfRestock != null}"
                         th:text="|Date of Restock: ${#temporals.format(plant.dateOfRestock, 'dd/MM/yyyy')}|"
