@@ -8,4 +8,5 @@ public interface AccessoryService {
 
     List<Accessory> getAllAccessory();
     Accessory getAccessoryById(Integer id);
+    void activateDisableAccessory(Integer id, String operation);
 }
