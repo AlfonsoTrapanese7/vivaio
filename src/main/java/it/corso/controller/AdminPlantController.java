@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import it.corso.model.Nursery;
 import it.corso.service.NurseryService;
+import jakarta.servlet.http.HttpSession;
 
 
 
@@ -44,6 +45,11 @@ public class AdminPlantController {
         return "redirect:/admin_plant";
     }
     
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("admin");;
+        return "redirect:/";
+    }
     
     
 }
