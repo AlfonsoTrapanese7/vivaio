@@ -54,9 +54,14 @@
             width: 160px;
             height: auto;
             background-color: #bacac0;
-            color:rgba(59, 26, 9, 0.742); 
+            color: rgba(59, 26, 9, 0.742);
             font-weight: bold;
 
+        }
+
+        .navigation-button:hover {
+            background-color: #77827b;
+            color: rgba(59, 26, 9, 0.9);
         }
 
         main {
@@ -86,6 +91,17 @@
             box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
         }
 
+        .btn{
+            background-color:rgba(234,225,210,255); 
+            border: 2px solid rgba(175, 111, 80, 0.742); 
+            color: rgba(59, 26, 9, 0.9); 
+            font-weight: bold;
+        }
+
+        .btn:hover{
+            background-color: rgba(175, 111, 80, 0.742);
+            color: rgb(234,225,210);
+        }
     </style>
 </head>
 
@@ -98,18 +114,16 @@
                 <!-- Logo and Company Name -->
                 <div class="navbar-brand d-flex align-items-center" href="#">
                     <img th:src="@{images/BellsproutGarden.jpg}" alt="Company Logo"
-                        class="d-inline-block align-text-top me-3" style="border:1px double rgba(175, 111, 80, 0.742); border-radius: 20px;">
+                        class="d-inline-block align-text-top me-3"
+                        style="border:1px double rgba(175, 111, 80, 0.742); border-radius: 20px;">
                 </div>
 
                 <!-- Navigation Buttons -->
                 <div class="navbar-nav ms-auto ">
-                    <a th:href="@{/}" class="btn me-5 navigation-button"
-                        >Home</a>
-                    <a th:href="@{/plant_catalogue}" class="btn me-5 navigation-button"
-                        >Plants
+                    <a th:href="@{/}" class="btn me-5 navigation-button">Home</a>
+                    <a th:href="@{/plant_catalogue}" class="btn me-5 navigation-button">Plants
                         catalogue</a>
-                    <a th:href="@{/tool_catalogue}" class="btn me-5 navigation-button"
-                        >Tools
+                    <a th:href="@{/tool_catalogue}" class="btn me-5 navigation-button">Tools
                         catalogue</a>
                 </div>
             </div>
@@ -120,23 +134,29 @@
         <div class="row">
             <div th:each="plant : ${nurseryPlants}" th:if="${plant.isActive != 0}" class="card m-3 plant-card"
                 style="width: 18rem; border-radius: 20px;">
-                <img th:if="${plant.photo != null}" th:src="@{${plant.photo}}" class="card-img-top" alt="Plant image" style="border-radius: 20px;">
-                <img th:if="${plant.photo == null}" th:src="@{images/02.jpg}" class="card-img-top" alt="Plant image" style="border-radius: 20px;">
+                <img th:if="${plant.photo != null}" th:src="@{${plant.photo}}" class="card-img-top" alt="Plant image"
+                    style="border-radius: 20px;">
+                <img th:if="${plant.photo == null}" th:src="@{images/02.jpg}" class="card-img-top" alt="Plant image"
+                    style="border-radius: 20px;">
                 <div class="card-body">
                     <h5 th:text="${plant.name}" class="card-title" style="font-weight: bold; text-align: center;"></h5>
-                    <p th:text="${plant.description}" class="card-text"></p>
+                    <p th:text="${plant.description}" class="card-text" style="font-style:italic; font-size: medium;">
+                    </p>
                     <p class="card-text">
-                        <span class="price-label">Price:</span>
+                        <span class="price-label" style="font-weight: bold;">Price:</span>
                         <span th:text="${#numbers.formatDecimal(plant.price,0,'POINT',2,'COMMA')}">0.00</span> Euro
                     </p>
                     <p class="card-text">
-                        <span class="quantity-label">Quantity:</span>
+                        <span class="quantity-label" style="font-weight: bold;">Quantity:</span>
                         <span th:text="${plant.quantity}">0</span>
                     </p>
-                    <p th:if="${plant.dateOfRestock != null}"
-                        th:text="|Date of Restock: ${#temporals.format(plant.dateOfRestock, 'dd/MM/yyyy')}|"
-                        class="card-text"></p>
-                    <a th:href="@{/plant_details(id=${plant.id})}" class="btn btn-primary">More Information</a>
+                    <p th:if="${plant.dateOfRestock != null}" class="card-text">
+                        <span class="restock-label" style="font-weight: bold;">Date of Restock:</span>
+                        <span th:text="${#temporals.format(plant.dateOfRestock, 'dd/MM/yyyy')}">01/01/2025</span>
+                    </p>
+                    <div class="d-flex justify-content-center mt-3">
+                        <a th:href="@{/plant_details(id=${plant.id})}" class="btn" >More Information</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -144,7 +164,8 @@
 
 
     <!-- Footer -->
-    <footer style="background-color:rgba(234,225,210,255); color:rgba(59, 26, 9, 0.742); border-top: 2px solid rgba(175, 111, 80, 0.742) ;">
+    <footer
+        style="background-color:rgba(234,225,210,255); color:rgba(59, 26, 9, 0.742); border-top: 2px solid rgba(175, 111, 80, 0.742) ;">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 mt-5">
@@ -189,7 +210,7 @@
                 </div>
 
             </div>
-        </div> <a th:href=" @{/}" class="adm" style="color:grey;">admin</a>
+        </div> <a th:href=" @{/admin_login}" class="adm" style="color:grey;">admin</a>
     </footer>
 
     <!-- Bootstrap JS and dependencies (optional, but recommended) -->
