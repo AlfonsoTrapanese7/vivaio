@@ -46,7 +46,6 @@
             background-position: center;
             background-repeat: no-repeat;
 
-
         }
 
 
@@ -88,17 +87,17 @@
         }
 
         .carousel-caption {
-            background-color: rgba(156, 97, 68, 0.797);
-            border-radius: 25%;
-            border: solid 5px darkgreen;
-            font-size: xx-large;
-            color: rgb(254, 254, 103);
+            background-color: rgba(0, 0, 0, 0.750);
+            margin-left: auto;
+            margin-right: auto;
+            border-top-left-radius: 10%;
+            border-top-right-radius: 10%
         }
     </style>
 </head>
 
-<body onload="initMap()">
-    <!-- ctrl+c/v per la mappa-->
+<body onload="initMap()"> 
+                <!-- ctrl+c/v per la mappa-->
     <!-- Header -->
     <header style="background-color: rgba(234,225,210,255)">
 
@@ -125,161 +124,21 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
-    <div id="carouselExampleCaptions" class="carousel slide" style=" margin-left: auto; margin-right: auto; width:90%;">
-        <div class="carousel-indicators" style="bottom:0;">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner"
-            style="height: 400px; border: 5px solid rgba(175, 111, 80, 0.742); border-bottom-left-radius: 30px; border-top-right-radius: 30px; margin-top: 2%;">
-            <div class="carousel-item active">
-                <img th:src="@{images/car01.avif}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-block w-100">
-                    <p>Spring is here!</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img th:src="@{images/car02.jpg}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-block">
-                    <h5>Second slide label</h5>
-                    <p>Some representative placeholder content for the second slide.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img th:src="@{images/car03.jpeg}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-block">
-                    <h5>Third slide label</h5>
-                    <p>Some representative placeholder content for the third slide.</p>
-                </div>
+    <!-- Form di login -->
+        <div class="row mt-4 justify-content-center">
+            <div class="col-lg-4 p-4 border">
+                <h4 class="text-center">Login Admin</h4>
+                <h5 th:if="${errore != null}" th:text="${errore}" class="text-center text-danger"></h5>
+                <form action="/admin_login" method="post">
+                    <input type="text" placeholder="Username" class="form-control mt-3" name="username" required>
+                    <input type="password" placeholder="Password" class="form-control mt-3" name="pword" required>
+                    <div class="text-center mt-4">
+                        <input type="submit" value="Login" class="btn btn-success">
+                    </div>
+                </form>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-
-    <div class="row mt-5" style="width: 80%; align-self: center;">
-        <!-- Left Column -->
-        <div class="col-xl-6 p-4">
-            <div class="product-card">
-                <div class="d-flex align-items-center">
-                    <img th:src="@{images/hp03.jpg}" alt="Product 1" class="product-image me-4 rounded"
-                        style="width: 100%; height: auto;">
-
-                </div>
-            </div>
-
-            <div class="product-card">
-                <h2 class="mb-3" style="font-weight: bolder;">Life finds a way</h2>
-                <div class="d-flex align-items-center">
-
-                    <p class="flex-grow-1">
-                    <section>
-
-                        <p>We opened our <strong>plant nursery</strong> with a clear mission: to reconnect people with
-                            nature and provide them with the essential <strong>tools to cultivate life</strong>, both in
-                            their homes and in the broader environment. There’s something inherently rewarding about
-                            watching plants grow, and we wanted to make it easier for everyone to experience that joy.
-                        </p>
-                        <p>With a strong focus on <strong>sustainability</strong> and <strong>education</strong>, our
-                            nursery is dedicated to supporting the local ecosystem by offering native plants that help
-                            foster <strong>biodiversity</strong>. These plants play a vital role in creating a balanced
-                            environment and promoting a healthy, thriving ecosystem.</p>
-                        <p>In a world that can sometimes feel disconnected from the earth, we created a space where
-                            <em>life truly finds a way to thrive</em>. Join us in our mission to nurture and protect the
-                            planet, one plant at a time.
-                        </p>
-                    </section>
-
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Right Column -->
-        <div class="col-xl-6 p-4">
-            <div class="product-card">
-                <h2 class="mb-3" style="font-weight: bolder;">Welcome</h2>
-                <div class="d-flex align-items-center">
-                    <p class="flex-grow-1">
-                    <section>
-                        <p>Welcome to our <strong>website</strong>! Explore our wide range of high-quality
-                            <strong>gardening tools</strong>, <strong>plants</strong>, <strong>flowers</strong>,
-                            <strong>trees</strong>, and everything you need to create your perfect garden. Whether
-                            you're a seasoned gardener or just starting out, we have everything from essential tools to
-                            unique plants, all carefully selected to help you grow and nurture your <strong>green
-                                space</strong>.
-                        </p>
-                        <p>Our products are designed to inspire your creativity and make gardening a true joy. Let us
-                            help you bring your <strong>garden dreams</strong> to life with the right tools and plants
-                            that suit your style and needs.</p>
-                        <p>And if you're nearby, come visit our store in <strong>Biancavilla</strong>—we'd love to
-                            welcome you in person and assist you in finding exactly what you need. We can't wait to see
-                            you!</p>
-                    </section>
-
-
-                    </p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="d-flex align-items-center">
-                    <img th:src="@{images/hp02.jpg}" alt="Product 1" class="product-image me-4 rounded"
-                        style="width: 100%; height: auto;">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row mt-5" style="width: 80%; align-self: center;">
-        <div class="col-xl-6 p-4">
-            <div class="product-card">
-                <div class="d-flex align-items-center">
-                    <img th:src="@{images/hp01.jpg}" alt="Product 1" class="product-image me-4 rounded"
-                        style="width: 100%; height: auto;">
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-6 p-4">
-            <div class="product-card">
-                <h2 class="mb-3" style="font-weight: bolder;">Our Commitment to Quality and Service</h2>
-                <div class="d-flex align-items-center">
-                    <p class="flex-grow-1">
-                    <section>
-                        <p>Every plant, flower, and gardening tool in our <strong>catalog</strong> is carefully selected
-                            to ensure the highest quality and customer satisfaction. We pride ourselves not just on
-                            offering products, but on providing <strong>solutions</strong> that help bring your
-                            gardening dreams to life. Whether you're searching for the perfect tool to tend to your
-                            garden or seeking a unique plant to brighten your outdoor space, our <strong>experienced
-                                team</strong> is always ready to provide <em>personalized advice</em> and
-                            recommendations.</p>
-                        <p>We understand that every garden is unique, which is why we are committed to helping you find
-                            exactly what you need—whether you're shopping <strong>online</strong> or visiting us in
-                            person at our store. Our goal is to be your trusted partner in gardening, supporting you at
-                            every step as you create a beautiful, thriving green space. Trust us to help you cultivate
-                            your perfect garden.</p>
-                    </section>
-
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    </main>
+    
 
     <!-- Footer -->
     <footer style="background-color:rgba(234,225,210,255); color:rgba(59, 26, 9, 0.742);">
