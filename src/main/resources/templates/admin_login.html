@@ -62,14 +62,14 @@
 
     <!-- Form di login -->
         <div class="row mt-4 justify-content-center">
-            <div class="col-lg-4 p-4 border">
+            <div class="col-lg-4 p-4 ">
                 <h4 class="text-center">Login Admin</h4>
                 <h5 th:if="${errore != null}" th:text="${errore}" class="text-center text-danger"></h5>
                 <form action="/admin_login" method="post">
                     <input type="text" placeholder="Username" class="form-control mt-3" name="username" required>
                     <input type="password" placeholder="Password" class="form-control mt-3" name="pword" required>
                     <div class="text-center mt-4">
-                        <input type="submit" value="Login" class="btn btn-success">
+                        <input type="submit" value="Login" class="btn me-5 navigation-button">
                     </div>
                 </form>
             </div>

@@ -67,6 +67,19 @@ h5 {
     padding-top: 10px;
 }
 
+form .navigation-button {
+     background-color: rgba(234, 225, 210, 255);
+    border: 2px solid rgba(175, 111, 80, 0.742);
+    color: rgba(59, 26, 9, 0.9);
+    font-weight: bold;
+    box-shadow: -5px 5px 0px 0px rgba(59, 26, 9, 0.742);
+}
+
+form .navigation-button:hover {
+    background-color: rgba(175, 111, 80, 0.742);
+    color: rgb(234, 225, 210);
+}
+
 .navigation-button:hover {
     background-color: #77827b;
     color: rgba(59, 26, 9, 0.9);
@@ -193,7 +206,7 @@ h2 {
 }
 
 .foto-dettaglio:hover {
-    transform: scale(1.2);
+    transform: scale(1.4);
     z-index: 1;
     border: 2px solid black;
     
