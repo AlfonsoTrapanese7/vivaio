@@ -57,15 +57,18 @@
 
     <!-- Details -->
     <div class="row mt-4 justify-content-center">
-        <div class="col-lg-4">
+        <div class="col-lg-4 mt-4 img-dettaglio">
             <img th:if="${tool.photo != null}" th:src="@{${tool.photo}}" alt="Tool Image"
-                class="img-fluid rounded-start" style="max-width: 100%; height: auto;">
+                class="img-fluid  rounded foto-dettaglio">
             <img th:if="${tool.photo == null}" th:src="@{images/02.jpg}" alt="Tool Image"
-                class="img-fluid rounded-start" style="max-width: 100%; height: auto;">
+                class="img-fluid rounded foto-dettaglio">
         </div>
-        <div class="col-lg-4">
-            <h5 th:text="${tool.name}"></h5>
-            <ul class="list-group mt-4">
+        <div class="col-lg-4 colonnadue">
+            <ul class="list-group mt-4 scheda-tecnica">
+                <li class="list-group-item">
+                    <h3 th:text="${tool.name}" class="titolo-dettaglio"></h3>
+                </li>
+                <li class="list-group-item descrizione" th:text="${tool.description}"></li>
                 <li class="list-group-item"
                     th:text="|Price: ${#numbers.formatDecimal(tool.price,0,'POINT',2,'COMMA')} Euro|"></li>
                 <li th:if="${tool.color != null}" class="list-group-item" th:text="|Color: ${tool.color}|"></li>
@@ -77,7 +80,7 @@
                 <li class="list-group-item" th:text="|Material:  ${tool.material}|" th:if="${tool.material != null}">
                 </li>
                 <li class="list-group-item" th:text="|Category:  ${tool.category.accessoryCategory}|"></li>
-                <li class="list-group-item" th:text="|Description: ${tool.description}"></li>
+
 
             </ul>
 
@@ -128,7 +131,7 @@
                 </div>
 
             </div>
-        </div> 
+        </div>
         <a th:href=" @{/admin_login}" class="adm">admin</a>
     </footer>
 
