@@ -1,0 +1,136 @@
+@charset "utf-8";
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: sans-serif;
+    background-color: #9fc09f;
+    background-image: url('/images/background02.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+header {
+    background-color: rgba(234, 225, 210, 255);
+    border-bottom: 2px solid rgba(175, 111, 80, 0.742);
+}
+
+.logo-image {
+    border: 1px double rgba(175, 111, 80, 0.742);
+    border-radius: 20px;
+    width: 40%;
+}
+
+.product-card {
+    margin-bottom: 2rem;
+}
+
+.product-image {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}
+
+h5 {
+    font-weight: bold;
+    text-align: center;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.card-description {
+    font-style: italic;
+    font-size: medium;
+}
+
+.navigation-button {
+    width: 160px;
+    height: auto;
+    background-color: #bacac0;
+    color: rgba(59, 26, 9, 0.742);
+    font-weight: bold;
+
+}
+
+.navigation-button:hover {
+    background-color: #77827b;
+    color: rgba(59, 26, 9, 0.9);
+}
+
+.map-container {
+    height: 200px;
+    width: 100%;
+    border: 3px solid rgba(96, 61, 43, 0.742);
+    margin-top: 5%;
+}
+
+.plant-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #f3f1e9;
+    border: 3px solid rgb(175, 188, 200);
+    padding-top: 1%;
+    width: 18rem;
+    border-radius: 20px;
+}
+
+.plant-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.more {
+    background-color: rgba(234, 225, 210, 255);
+    border: 2px solid rgba(175, 111, 80, 0.742);
+    color: rgba(59, 26, 9, 0.9);
+    font-weight: bold;
+}
+
+.more:hover {
+    background-color: rgba(175, 111, 80, 0.742);
+    color: rgb(234, 225, 210);
+}
+
+footer {
+    background-color:rgba(234,225,210,255); 
+    color:rgba(59, 26, 9, 0.742); 
+    border-top: 2px solid rgba(175, 111, 80, 0.742) ;
+}
+.adm {
+    color:grey;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    height: 400px;
+    width: 100%;
+    top: 290px;
+}
+
+#carouselExampleCaptions {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+.carousel-inner {
+    height: 400px;
+    border: 5px solid rgba(175, 111, 80, 0.742);
+    border-bottom-left-radius: 150px;
+    border-top-right-radius: 150px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-top: 2%;
+}
+
+h2 {
+    font-weight: bolder;
+}
+
+.custom-row {
+    width: 80%;
+    align-self: center;
+}

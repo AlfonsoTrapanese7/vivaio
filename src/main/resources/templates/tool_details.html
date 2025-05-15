@@ -7,6 +7,7 @@
     <title>Tool Details</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqvNSk7KCA7zNzfDS2X48P1zxbP3VGabM"></script>
     <script>
         function initMap() {
@@ -30,69 +31,25 @@
             });
         }
     </script>
-    <style>
-        /* Custom additional styles */
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            background-color: #8CBD8C;
-            font-family: sans-serif;
-        }
-
-        img {
-            width: 40%;
-        }
-
-        .navigation-button {
-            width: 160px;
-            height: auto;
-
-        }
-
-        main {
-            flex-grow: 1;
-        }
-
-        .product-image {
-            object-fit: cover;
-            height: 200px;
-            width: 300px;
-        }
-
-        .product-card {
-            margin-bottom: 2rem;
-        }
-
-        .map {
-            margin-top: 10%;
-            width: 100%;
-        }
-    </style>
 </head>
 
 <body onload="initMap()">
     <!-- Header -->
-    <header style="background-color: rgba(234,225,210,255)">
+    <header>
 
         <nav class="navbar navbar-expand-lg navbar-light container">
             <div class=" container-fluid">
                 <!-- Logo and Company Name -->
                 <div class="navbar-brand d-flex align-items-center" href="#">
                     <img th:src="@{images/BellsproutGarden.jpg}" alt="Company Logo"
-                        class="d-inline-block align-text-top me-3" style="border:1px double rgba(175, 111, 80, 0.742);">
+                        class="d-inline-block align-text-top me-3 logo-image">
                 </div>
 
                 <!-- Navigation Buttons -->
                 <div class="navbar-nav ms-auto ">
-                    <a th:href="@{/}" class="btn me-5 navigation-button"
-                        style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742); font-weight: bold;">Home</a>
-                    <a th:href="@{/plant_catalogue}" class="btn me-5 navigation-button"
-                        style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Plants
-                        catalogue</a>
-                    <a th:href="@{/tool_catalogue}" class="btn me-5 navigation-button"
-                        style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Tools
-                        catalogue</a>
+                    <a th:href="@{/}" class="btn me-5 navigation-button">Home</a>
+                    <a th:href="@{/plant_catalogue}" class="btn me-5 navigation-button">Plants catalogue</a>
+                    <a th:href="@{/tool_catalogue}" class="btn me-5 navigation-button">Tools catalogue</a>
                 </div>
             </div>
         </nav>
@@ -129,7 +86,7 @@
 
 
     <!-- Footer -->
-    <footer style="background-color:rgba(234,225,210,255); color:rgba(59, 26, 9, 0.742); bottom:0; margin-top: 20%;">
+    <footer>
         <div class="container">
             <div class="row">
                 <div class="col-md-3 mt-5">
@@ -167,14 +124,12 @@
 
                 <!-- ctrl+c/v per la mappa-->
                 <div class="col-md-3">
-
-                    <div id="map"
-                        style="height: 200px; width: 100%; border:3px solid rgba(96, 61, 43, 0.742); margin-top: 5%;">
-                    </div>
+                    <div id="map" class="map-container"></div>
                 </div>
 
             </div>
-        </div> <a th:href=" @{/admin_login}" class="adm" style="color:grey;">admin</a>
+        </div> 
+        <a th:href=" @{/admin_login}" class="adm">admin</a>
     </footer>
 
     <!-- Bootstrap JS and dependencies (optional, but recommended) -->

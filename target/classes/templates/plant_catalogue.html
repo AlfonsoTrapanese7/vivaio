@@ -7,6 +7,7 @@
     <title>Plant Catalogue</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqvNSk7KCA7zNzfDS2X48P1zxbP3VGabM"></script>
     <script>
         function initMap() {
@@ -30,92 +31,18 @@
             });
         }
     </script>
-    <style>
-        /* Custom additional styles */
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            font-family: sans-serif;
-            background-color: #9fc09f;
-            background-image: url('/images/background02.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-
-
-        }
-
-        img {
-            width: 40%;
-        }
-
-        .navigation-button {
-            width: 160px;
-            height: auto;
-            background-color: #bacac0;
-            color: rgba(59, 26, 9, 0.742);
-            font-weight: bold;
-
-        }
-
-        .navigation-button:hover {
-            background-color: #77827b;
-            color: rgba(59, 26, 9, 0.9);
-        }
-
-        main {
-            flex-grow: 1;
-        }
-
-        .product-image {
-            object-fit: cover;
-            height: 200px;
-            width: 300px;
-        }
-
-        .map {
-            margin-top: 10%;
-            width: 100%;
-        }
-
-        .plant-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background-color: #f3f1e9;
-            border: 3px solid rgb(175, 188, 200);
-            padding-top: 1%;
-        }
-
-        .plant-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .btn{
-            background-color:rgba(234,225,210,255); 
-            border: 2px solid rgba(175, 111, 80, 0.742); 
-            color: rgba(59, 26, 9, 0.9); 
-            font-weight: bold;
-        }
-
-        .btn:hover{
-            background-color: rgba(175, 111, 80, 0.742);
-            color: rgb(234,225,210);
-        }
-    </style>
 </head>
 
 <body onload="initMap()">
     <!-- Header -->
-    <header style="background-color: rgba(234,225,210,255); border-bottom: 2px solid rgba(175, 111, 80, 0.742) ;">
+    <header>
 
         <nav class="navbar navbar-expand-lg navbar-light container">
             <div class=" container-fluid">
                 <!-- Logo and Company Name -->
                 <div class="navbar-brand d-flex align-items-center" href="#">
                     <img th:src="@{images/BellsproutGarden.jpg}" alt="Company Logo"
-                        class="d-inline-block align-text-top me-3"
-                        style="border:1px double rgba(175, 111, 80, 0.742); border-radius: 20px;">
+                        class="d-inline-block align-text-top me-3 logo-image">
                 </div>
 
                 <!-- Navigation Buttons -->
@@ -132,30 +59,29 @@
     <!-- Cards -->
     <div class="container">
         <div class="row">
-            <div th:each="plant : ${nurseryPlants}" th:if="${plant.isActive != 0}" class="card m-3 plant-card"
-                style="width: 18rem; border-radius: 20px;">
-                <img th:if="${plant.photo != null}" th:src="@{${plant.photo}}" class="card-img-top" alt="Plant image"
-                    style="border-radius: 20px;">
-                <img th:if="${plant.photo == null}" th:src="@{images/02.jpg}" class="card-img-top" alt="Plant image"
-                    style="border-radius: 20px;">
+            <div th:each="plant : ${nurseryPlants}" th:if="${plant.isActive != 0}" class="card m-3 plant-card">
+                <img th:if="${plant.photo != null}" th:src="@{${plant.photo}}" class="card-img-top product-image"
+                    alt="Plant image">
+                <img th:if="${plant.photo == null}" th:src="@{images/02.jpg}" class="card-img-top product-image"
+                    alt="Plant image">
                 <div class="card-body">
-                    <h5 th:text="${plant.name}" class="card-title" style="font-weight: bold; text-align: center;"></h5>
-                    <p th:text="${plant.description}" class="card-text" style="font-style:italic; font-size: medium;">
+                    <h5 th:text="${plant.name}" class="card-title"></h5>
+                    <p th:text="${plant.description}" class="card-description">
                     </p>
                     <p class="card-text">
-                        <span class="price-label" style="font-weight: bold;">Price:</span>
+                        <span class="label">Price:</span>
                         <span th:text="${#numbers.formatDecimal(plant.price,0,'POINT',2,'COMMA')}">0.00</span> Euro
                     </p>
                     <p class="card-text">
-                        <span class="quantity-label" style="font-weight: bold;">Quantity:</span>
+                        <span class="label">Quantity:</span>
                         <span th:text="${plant.quantity}">0</span>
                     </p>
                     <p th:if="${plant.dateOfRestock != null}" class="card-text">
-                        <span class="restock-label" style="font-weight: bold;">Date of Restock:</span>
+                        <span class="label">Date of Restock:</span>
                         <span th:text="${#temporals.format(plant.dateOfRestock, 'dd/MM/yyyy')}">01/01/2025</span>
                     </p>
                     <div class="d-flex justify-content-center mt-3">
-                        <a th:href="@{/plant_details(id=${plant.id})}" class="btn" >More Information</a>
+                        <a th:href="@{/plant_details(id=${plant.id})}" class="btn more">More Information</a>
                     </div>
                 </div>
             </div>
@@ -164,8 +90,7 @@
 
 
     <!-- Footer -->
-    <footer
-        style="background-color:rgba(234,225,210,255); color:rgba(59, 26, 9, 0.742); border-top: 2px solid rgba(175, 111, 80, 0.742) ;">
+    <footer>
         <div class="container">
             <div class="row">
                 <div class="col-md-3 mt-5">
@@ -203,14 +128,11 @@
 
                 <!-- ctrl+c/v per la mappa-->
                 <div class="col-md-3">
-
-                    <div id="map"
-                        style="height: 200px; width: 100%; border:3px solid rgba(96, 61, 43, 0.742); margin-top: 5%;">
-                    </div>
+                    <div id="map" class="map-container"></div>
                 </div>
-
             </div>
-        </div> <a th:href=" @{/admin_login}" class="adm" style="color:grey;">admin</a>
+        </div> 
+        <a th:href=" @{/admin_login}" class="adm">admin</a>
     </footer>
 
     <!-- Bootstrap JS and dependencies (optional, but recommended) -->
