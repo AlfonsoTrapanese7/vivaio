@@ -179,7 +179,11 @@
                         <option disabled selected value="">-Categories-</option>
                         <option th:each="singleCategory : ${categories}" th:value="${singleCategory}" th:text="${singleCategory.accessoryCategory}"></option>
                     </select>
-                     
+                    
+                    <div class="text-center mt-4">
+                        <input type="submit" value="Confirm" class="btn btn-success">
+                    </div>
+
                 </form>
             </div>
         </div>
