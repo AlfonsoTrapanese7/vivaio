@@ -152,7 +152,7 @@
         </div>
     </div>
 
-<!-- Form di registrazione -->
+<!-- Form di inserimento Accessory -->
     <div class="row justify-content-center mt-4">
             <div class="col-lg-4 border p-4">
                 <h4 class="text-center">Insert a new Accessory in catalogue</h4>
@@ -177,7 +177,7 @@
                     <!-- select -->
                     <select class="form-select mt-3" th:field="*{category.id}" required>
                         <option disabled selected value="">-Categories-</option>
-                        <option th:each="singleCategory : ${categories}" th:value="${singleCategory}" th:text="${singleCategory.accessoryCategory}"></option>
+                        <option th:each="singleCategory : ${categories}" th:value="${singleCategory.id}" th:text="${singleCategory.accessoryCategory}"></option>
                     </select>
                     
                     <div class="text-center mt-4">
