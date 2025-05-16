@@ -15,4 +15,5 @@ public interface NurseryService {
     List<Type> getAllType();
     List<Location> getAllLocation();
     void saveNurseryAndPhoto(Nursery nursery, MultipartFile photo);
+    void deleteNurseryById(Integer id);
 }

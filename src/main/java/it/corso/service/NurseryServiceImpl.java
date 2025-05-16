@@ -70,6 +70,11 @@ public class NurseryServiceImpl implements NurseryService{
         nurseryRepository.save(nursery);
     }
 
+    @Override
+    public void deleteNurseryById(Integer id) {
+        nurseryRepository.deleteById(id);
+    }
+
     
 
 

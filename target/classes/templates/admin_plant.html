@@ -147,6 +147,8 @@
                         <td class="align-middle text-end">
                             <a th:if="${plant.isActive == 0}" th:href="@{/admin_plant/activate(id=${plant.id})}" class="btn me-5 navigation-button" style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Activate</a>
                             <a th:if="${plant.isActive == 1}" th:href="@{/admin_plant/disable(id=${plant.id})}" class="btn me-5 navigation-button" style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Disable</a>
+
+                            <a th:href="@{/admin_plant/delete(id=${plant.id})}" class="btn me-5 navigation-button" style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Delete</a>
                         </td>
                     </tr>
             </table>
