@@ -60,11 +60,12 @@
     <div class="container">
         <div class="row">
             <div th:each="plant : ${nurseryPlants}" th:if="${plant.isActive != 0}" class="card m-3 plant-card">
-                <img th:if="${plant.photo != null}" th:src="@{${plant.photo}}" class="card-img-top product-image"
+                    <img th:if="${plant.photo != null}" th:src="@{${plant.photo}}" class="card-img-top product-image"
                     alt="Plant image">
-                <img th:if="${plant.photo == null}" th:src="@{images/NoImage.png}" class="card-img-top product-image"
+                    <img th:if="${plant.photo == null}" th:src="@{images/02.jpg}" class="card-img-top product-image"
                     alt="Plant image">
-                <div class="card-body">
+                
+                <div class="card-body card-content">
                     <h5 th:text="${plant.name}" class="card-title"></h5>
                     
                     <p class="card-text">
