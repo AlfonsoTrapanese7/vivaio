@@ -24,5 +24,6 @@ public class ToolDetailsController {
         model.addAttribute("tool", tool);
         return "tool_details";
     }
+
     
 }
