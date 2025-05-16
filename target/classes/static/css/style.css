@@ -133,7 +133,7 @@ form .navigation-button:hover {
 .navigation-button-review:hover {
     background-color: #77827b;
     color: #bacac0;
-    transform: translate(5px, -5px);   
+    transform: translate(5px, -5px);
 }
 
 .map-container {
@@ -248,15 +248,16 @@ h2 {
     /*centramento dell'immagine*/
     min-width: auto;
     /*larghezza minima pari alla larghezza dell'immagine*/
-    max-width: 100%;
+    max-width: 90%;
     /*larghezza massima pari alla larghezza del div (100% del contenitore*/
-    max-height: 100%;
+    max-height: 90%;
     /*altezza massima pari all'altezza del div*/
-    transition: transform 0.3s ease;
+    transition: transform 0.7s ease;
+    border: 1px solid black;
 }
 
 .foto-dettaglio:hover {
-    transform: scale(1.4);
+    transform: scale(1.2);
     z-index: 1;
     border: 2px solid black;
 }
@@ -330,4 +331,9 @@ input[type="date"]:not(:focus):invalid::before {
     content: attr(placeholder);
     color: #999;
     margin-right: 0.5em;
-  }
+}
+
+.card-img-top {
+    border-radius: 10px;
+    border: 1px solid rgb(0, 0, 0);
+}
