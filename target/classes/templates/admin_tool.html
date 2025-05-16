@@ -101,13 +101,13 @@
 
                     <input type="text" placeholder="Name" class="form-control mt-3" th:field="*{name}" required>
                     <small class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
-                    <input type="number" step="any" placeholder="Price" class="form-control mt-3" th:field="*{price}" required>
+                    <input type="number" min="0" step="any" placeholder="Price" class="form-control mt-3" th:field="*{price}" required>
                     <textarea th:field="*{description}" placeholder="Description" required class="form-control mt-3"></textarea>
                     <input type="text" placeholder="Color accessory" class="form-control mt-3" th:field="*{color}">
                     <small class="text-danger" th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></small>
                     <input type="file" name="photography" placeholder="Photo accessory" class="form-control mt-3" >
-                    <input type="number" th:field="*{quantity}" placeholder="Quantity" class="form-control mt-3" required>
-                    <input type="date" class="form-control mt-3" th:field="*{dateOfRestock}">
+                    <input type="number" min="0" th:field="*{quantity}" placeholder="Quantity" class="form-control mt-3" required>
+                    <input type="date" class="form-control mt-3" th:attr="min=${#dates.format(#dates.createNow(),'yyyy-MM-dd')}" th:field="*{dateOfRestock}">
                     <input type="text" th:field="*{size}" placeholder="Size" class="form-control mt-3" required>
                     <small class="text-danger" th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></small>
                     <input type="text" th:field="*{brand}" placeholder="Brand" class="form-control mt-3" required>

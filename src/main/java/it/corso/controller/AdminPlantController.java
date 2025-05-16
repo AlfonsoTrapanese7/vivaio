@@ -77,8 +77,7 @@ public class AdminPlantController {
     @PostMapping
     public String handleForm(@Valid @ModelAttribute Nursery nursery, BindingResult result, @RequestParam MultipartFile photography, Model model) {
         if(result.hasErrors()) {
-            Nursery nurseryF = new Nursery();
-            model.addAttribute("nursery", nurseryF);
+            
             List<Nursery> plants = nurseryService.getAllNursery();
             List<Type> types = nurseryService.getAllType();
             List<Location> locations = nurseryService.getAllLocation();
