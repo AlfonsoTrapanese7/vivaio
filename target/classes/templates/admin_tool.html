@@ -73,7 +73,7 @@
                 <table class="table tabel-striped">
                     <tr th:each="tool : ${tools}">
                         <td class="text-center">
-                            <img th:src="@{${tool.photo == null ? 'images/02.jpg' : tool.photo}}" alt="Tool Image" style="max-height: 70px;">
+                            <img th:src="@{${tool.photo == null ? 'NoImage.png' : tool.photo}}" alt="Tool Image" style="max-height: 70px;">
                         </td>
                         <td class="align-middle" th:text="${tool.name}"></td>
                         <td class="align-middle text-end" th:text="|${#numbers.formatDecimal(tool.price,0,'POINT',2,'COMMA')} Euro|"></td>
