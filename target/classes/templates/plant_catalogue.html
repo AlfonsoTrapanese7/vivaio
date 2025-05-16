@@ -66,8 +66,7 @@
                     alt="Plant image">
                 <div class="card-body">
                     <h5 th:text="${plant.name}" class="card-title"></h5>
-                    <p th:text="${plant.description}" class="card-description">
-                    </p>
+                    
                     <p class="card-text">
                         <span class="label">Price:</span>
                         <span th:text="${#numbers.formatDecimal(plant.price,0,'POINT',2,'COMMA')}">0.00</span> Euro
