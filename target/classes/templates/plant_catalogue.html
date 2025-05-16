@@ -66,7 +66,7 @@
                     alt="Plant image">
                 <div class="card-body">
                     <h5 th:text="${plant.name}" class="card-title"></h5>
-                    
+
                     <p class="card-text">
                         <span class="label">Price:</span>
                         <span th:text="${#numbers.formatDecimal(plant.price,0,'POINT',2,'COMMA')}">0.00</span> Euro
@@ -86,7 +86,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- Footer -->
     <footer>
@@ -130,7 +129,7 @@
                     <div id="map" class="map-container"></div>
                 </div>
             </div>
-        </div> 
+        </div>
         <a th:href=" @{/admin_login}" class="adm">admin</a>
     </footer>
 
