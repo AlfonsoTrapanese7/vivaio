@@ -176,7 +176,7 @@
                     <input type="hidden" th:field="*{isActive}" th:value="0" required>
                     <!-- select -->
                     <select class="form-select mt-3" th:field="*{category.id}" required>
-                        <option disabled selected value="">-Categories-</option>
+                        <option disabled selected value="">- Select tool category -</option>
                         <option th:each="singleCategory : ${categories}" th:value="${singleCategory.id}" th:text="${singleCategory.accessoryCategory}"></option>
                     </select>
                     
