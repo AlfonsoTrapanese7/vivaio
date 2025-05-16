@@ -71,8 +71,6 @@ public class AdminToolController {
     public String accessoryForm(@Valid @ModelAttribute Accessory accesory, BindingResult result, @RequestParam MultipartFile photography, Model model) {
         if(result.hasErrors()){
             result.getFieldErrors().forEach(e -> System.out.println(e.getField() + " -> " + e.getDefaultMessage()));
-            Accessory accessoryf = new Accessory();
-            model.addAttribute("accessory", accessoryf);
             List<Accessory> tools = accessoryService.getAllAccessory();
             List<Category> categories = accessoryService.getAllCategory();
             model.addAttribute("tools", tools);
