@@ -108,8 +108,9 @@
 <!-- Form di inserimento Accessory -->
     <div class="row justify-content-center mt-4">
             <div class="col-lg-4 p-4 cornice-form">
-                <h4 class="text-center">Insert a new Accessory in catalogue</h4>
+                
                 <form th:object="${accessory}" method="post" enctype="multipart/form-data">
+                    <h4 class="text-center">Insert a new Accessory in catalogue</h4>
 
                     <input type="text" placeholder="Name" class="form-control mt-3" th:field="*{name}" required>
                     <small class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
