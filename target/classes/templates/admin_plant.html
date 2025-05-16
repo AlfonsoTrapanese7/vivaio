@@ -87,7 +87,7 @@
                 <tr th:each="plant : ${plants}">
                     <td class="text-center">
                         <img th:src="@{${plant.photo == null ? 'NoImage.png' : plant.photo}}" alt="Plant Image"
-                            style="max-height: 70px;">
+                            style="max-height: 70px; border: 1px solid black; border-radius: 10px;">
                     </td>
                     <td class="align-middle" th:text="${plant.name}"></td>
                     <td class="align-middle"
@@ -126,8 +126,8 @@
                     th:value="${price != 0 ? price : ''}" required>
 
 
-                <textarea th:field="*{description}" placeholder="Description" class="form-control mt-3" style="resize: none;";
-                    required></textarea>
+                <textarea th:field="*{description}" placeholder="Description" class="form-control mt-3"
+                    style="resize: none;" ; required></textarea>
 
                 <input type="text" placeholder="Color" class="form-control mt-3" th:field="*{color}">
                 <small class="text-danger" th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></small>
@@ -138,7 +138,8 @@
                     placeholder="Quantity" required>
 
 
-                <input type="date" th:attr="min=${#dates.format(#dates.createNow(),'yyyy-MM-dd')}" class="form-control mt-3" th:field="*{dateOfRestock}">
+                <input type="date" th:attr="min=${#dates.format(#dates.createNow(),'yyyy-MM-dd')}"
+                    class="form-control mt-3" th:field="*{dateOfRestock}">
 
                 <input type="text" placeholder="Origin" class="form-control mt-3" th:field="*{origin}" required>
                 <small class="text-danger" th:if="${#fields.hasErrors('origin')}" th:errors="*{origin}"></small>
