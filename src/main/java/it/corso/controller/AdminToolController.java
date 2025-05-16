@@ -34,7 +34,7 @@ public class AdminToolController {
     @GetMapping
     public String renderPage(Model model) {
         Accessory accessory = new Accessory();
-        model.addAttribute("accesory", accessory);
+        model.addAttribute("accessory", accessory);
         List<Accessory> tools = accessoryService.getAllAccessory();
         List<Category> categories = accessoryService.getAllCategory();
         model.addAttribute("tools", tools);
