@@ -59,7 +59,7 @@
         <div class="row">
             <div th:each="tool : ${tools}" th:if="${tool.isActive != 0}" class="card m-3 plant-card">
                 <img th:if="${tool.photo != null}" th:src="@{${tool.photo}}" class="card-img-top" alt="Tool image product-image">
-                <img th:if="${tool.photo == null}" th:src="@{images/NoImage.png}" class="card-img-top" alt="Tool image product-image">
+                <img th:if="${tool.photo == null}" th:src="@{images/02.jpg}" class="card-img-top" alt="Tool image product-image">
                 <div class="card-body">
                     <h5 th:text="${tool.name}" class="card-title"></h5>
                     <p class="card-text">

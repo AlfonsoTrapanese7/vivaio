@@ -59,7 +59,7 @@
                 <div class="navbar-nav ms-auto ">
                     <a th:href="@{/}" class="btn me-5 navigation-button">Home</a>
                     <a th:href="@{/admin_page}" class="btn me-5 navigation-button">Home Admin</a>
-                    <a th:href="@{/tool_catalogue}" class="btn me-5 navigation-button-review">User Tools catalogue</a>
+                    <a th:href="@{/plant_catalogue}" class="btn me-5 navigation-button-review">User Plants catalogue</a>
                     <a th:href="@{/admin_plant}" class="btn me-5 navigation-button-review">Edit Plants catalogue</a>
                     <a th:href="@{/admin_page/logout}" class="btn me-5 logout-button">Logout</a>
 
@@ -85,7 +85,7 @@
                 </tr>
                     <tr th:each="tool : ${tools}">
                         <td class="text-center">
-                            <img th:src="@{${tool.photo == null ? 'NoImage.png' : tool.photo}}" alt="Tool Image" style="max-height: 70px; border: 1px solid black; border-radius: 10px;">
+                            <img th:src="@{${tool.photo == null ? 'images/02.jpg' : tool.photo}}" alt="Tool Image" style="max-height: 70px;">
                         </td>
                         <td class="align-middle" th:text="${tool.name}"></td>
                         <td class="align-middle text-end" th:text="|${#numbers.formatDecimal(tool.price,0,'POINT',2,'COMMA')} Euro|"></td>
