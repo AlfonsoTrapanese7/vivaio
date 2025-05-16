@@ -32,37 +32,38 @@
                 }
             });
         }
+
+        function scrollToFirstForm() {
+            const firstForm = document.querySelector("form");
+            if (firstForm) {
+                firstForm.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+
     </script>
 </head>
 
 <body onload="initMap()">
     <!-- ctrl+c/v per la mappa-->
     <!-- Header -->
-    <header style="background-color: rgba(234,225,210,255)">
-
+    <header>
         <nav class="navbar navbar-expand-lg navbar-light container">
             <div class=" container-fluid">
                 <!-- Logo and Company Name -->
                 <div class="navbar-brand d-flex align-items-center" href="#">
                     <img th:src="@{images/BellsproutGarden.jpg}" alt="Company Logo"
-                        class="d-inline-block align-text-top me-3" style="border:1px solid rgba(175, 111, 80, 0.742);">
+                        class="d-inline-block align-text-top me-3 logo-image">
                 </div>
 
                 <!-- Navigation Buttons -->
                 <div class="navbar-nav ms-auto ">
-                    <a th:href="@{/}" class="btn me-5 navigation-button"
-                        style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742); font-weight: bold;">Home</a>
-                    <a th:href="@{/admin_page}" class="btn me-5 navigation-button"
-                        style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742); font-weight: bold;">Home Admin</a>
-                    <a th:href="@{/admin_plant}" class="btn me-5 navigation-button"
-                        style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Edit Plants
-                        catalogue</a>
-                    <a th:href="@{/tool_catalogue}" class="btn me-5 navigation-button"
-                        style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">User Tools
-                        catalogue</a>
-                    <!-- bottone di logout dell'admin (fatelo bello e posizionatelo meglio)-->
-                    <a th:href="@{/admin_tool/logout}" class="btn me-5 navigation-button" style="background-color: rgba(207, 147, 116, 0.742); color:rgba(59, 26, 9, 0.742); font-weight: bold;">Logout</a> 
-                </div> 
+                    <a th:href="@{/}" class="btn me-5 navigation-button">Home</a>
+                    <a th:href="@{/admin_page}" class="btn me-5 navigation-button">Home Admin</a>
+                    <a th:href="@{/plant_catalogue}" class="btn me-5 navigation-button-review">User Plants catalogue</a>
+                    <a th:href="@{/admin_plant}" class="btn me-5 navigation-button-review">Edit Plants catalogue</a>
+                    <a th:href="@{/admin_page/logout}" class="btn me-5 logout-button">Logout</a>
+
+                </div>
             </div>
         </nav>
     </header>
@@ -70,7 +71,18 @@
         <div class="row justify-content-center mt-4">
             <div class="col-10">
                 <h4 class="text-center">Tool Catalogue</h4>
+                <button onclick="scrollToFirstForm()">Go to<br> Form</button>
                 <table class="table tabel-striped">
+                    <tr>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Date of Restock</th>
+                    <th>Status</th>
+                    <th>Buttons</th>
+
+                </tr>
                     <tr th:each="tool : ${tools}">
                         <td class="text-center">
                             <img th:src="@{${tool.photo == null ? 'images/02.jpg' : tool.photo}}" alt="Tool Image" style="max-height: 70px;">
@@ -84,9 +96,9 @@
                         <td class="align-middle text-end">
                             
                             <a th:href="@{/admin_tool/activate(id=${tool.id})}" th:if="${tool.isActive == 0}" class="btn me-5 navigation-button" style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Activate</a>
-                            <a th:href="@{/admin_tool/disable(id=${tool.id})}" th:if="${tool.isActive == 1}" class="btn me-5 navigation-button" style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Disable</a>
+                            <a th:href="@{/admin_tool/disable(id=${tool.id})}" th:if="${tool.isActive == 1}" class="btn me-5 navigation-button"  style="background-color: rgba(234, 225, 210, 255); color: rgba(59, 26, 9, 0.9); box-shadow:-5px 5px 0px 0px rgba(59, 26, 9, 0.742); border: 2px solid rgba(175, 111, 80, 0.742);font-weight: bold;">Disable</a>
 
-                            <a th:href="@{/admin_tool/delete(id=${tool.id})}" class="btn me-5 navigation-button" style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Delete</a>
+                            <a th:href="@{/admin_tool/delete(id=${tool.id})}" class="btn me-5 navigation-button" style="background-color: #b02424; color:rgb(255, 255, 255);font-weight: bold;box-shadow:-5px 5px 0px 0px #651515; border: 2px solid #b02424;">Delete</a>
                         </td>
                     </tr>
             </table>
@@ -95,18 +107,20 @@
 
 <!-- Form di inserimento Accessory -->
     <div class="row justify-content-center mt-4">
-            <div class="col-lg-4 border p-4">
+            <div class="col-lg-4 p-4 cornice-form">
                 <h4 class="text-center">Insert a new Accessory in catalogue</h4>
                 <form th:object="${accessory}" method="post" enctype="multipart/form-data">
 
                     <input type="text" placeholder="Name" class="form-control mt-3" th:field="*{name}" required>
                     <small class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
-                    <input type="number" min="0" step="any" placeholder="Price" class="form-control mt-3" th:field="*{price}" required>
-                    <textarea th:field="*{description}" placeholder="Description" required class="form-control mt-3"></textarea>
+                    <input type="number" step="any" placeholder="Price" class="form-control mt-3"
+                    th:value="${price != 0 ? price : ''}" required>
+                    <textarea th:field="*{description}" placeholder="Description" required class="form-control mt-3" style="resize: none;"></textarea>
                     <input type="text" placeholder="Color accessory" class="form-control mt-3" th:field="*{color}">
                     <small class="text-danger" th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></small>
                     <input type="file" name="photography" placeholder="Photo accessory" class="form-control mt-3" >
-                    <input type="number" min="0" th:field="*{quantity}" placeholder="Quantity" class="form-control mt-3" required>
+                    <input type="number" class="form-control mt-3" th:value="${quantity != null ? quantity : ''}"
+                    placeholder="Quantity" required>
                     <input type="date" class="form-control mt-3" th:attr="min=${#dates.format(#dates.createNow(),'yyyy-MM-dd')}" th:field="*{dateOfRestock}">
                     <input type="text" th:field="*{size}" placeholder="Size" class="form-control mt-3" required>
                     <small class="text-danger" th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></small>

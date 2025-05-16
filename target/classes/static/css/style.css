@@ -333,6 +333,17 @@ input[type="date"]:not(:focus):invalid::before {
     margin-right: 0.5em;
 }
 
+table {
+    border-collapse: separate; /* Necessario per applicare border-radius */
+  border-spacing: 0; /* Rimuove lo spazio tra le celle */
+  border-radius: 20px;
+  overflow: hidden; /* Necessario per evitare che il contenuto esca fuori dai bordi */
+}
+
+.cornice-form {
+    border: 3px solid white;
+    margin-bottom: 3%;
+}
 .card-img-top {
     border-radius: 10px;
     border: 1px solid rgb(0, 0, 0);
