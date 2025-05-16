@@ -43,16 +43,23 @@ public class AdminToolController {
     }
 
     @GetMapping("/activate")
-    public String activateTool(@RequestParam Integer id) {
+    public String activateTool(@RequestParam(required=true) Integer id) {
         accessoryService.activateDisableAccessory(id, "activate");
         return "redirect:/admin_tool";
     }
 
     @GetMapping("/disable")
-    public String disableTool(@RequestParam Integer id) {
+    public String disableTool(@RequestParam(required=true) Integer id) {
         accessoryService.activateDisableAccessory(id, "disable");
         return "redirect:/admin_tool";
     }
+
+    @GetMapping("/delete")
+    public String deleteTool(@RequestParam(required=true) Integer id) {
+        accessoryService.deleteAccessoryById(id);
+        return "redirect:/admin_tool";
+    }
+    
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {

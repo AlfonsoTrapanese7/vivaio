@@ -14,5 +14,6 @@ public interface AccessoryService {
     void activateDisableAccessory(Integer id, String operation);
     List<Category> getAllCategory();
     void saveAccessoryAndPhoto(Accessory accessory, MultipartFile photo);
+    void deleteAccessoryById(Integer id);
 
 }

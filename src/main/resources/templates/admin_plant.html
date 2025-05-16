@@ -68,6 +68,7 @@
         </nav>
     </header>
 
+<<<<<<< HEAD
 
     <!-- catalogo piante -->
     <div class="row justify-content-center mt-4">
@@ -107,6 +108,30 @@
                             style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Disable</a>
                     </td>
                 </tr>
+=======
+<!-- catalogo piante -->
+   <div class="row justify-content-center mt-4">
+            <div class="col-10">
+                <h4 class="text-center">Plant Catalogue</h4>
+                <table class="table tabel-striped">
+                    <tr th:each="plant : ${plants}">
+                        <td class="text-center">
+                            <img th:src="@{${plant.photo == null ? 'images/02.jpg' : plant.photo}}" alt="Plant Image" style="max-height: 70px;">
+                        </td>
+                        <td class="align-middle" th:text="${plant.name}"></td>
+                        <td class="align-middle text-end" th:text="|${#numbers.formatDecimal(plant.price,0,'POINT',2,'COMMA')} Euro|"></td>
+                        <td class="align-middle" th:text="${plant.quantity}"></td>
+                        <td th:if="${plant.dateOfRestock != null}" class="align-middle" th:text="${#temporals.format(plant.dateOfRestock, 'dd/MM/yyyy')}"></td>
+                        <td th:if="${plant.dateOfRestock == null}" class="align-middle">Date of restock unassigned</td>
+                        <td class="align-middle text-center" th:text="${plant.isActive == 1 ? 'Active' : 'Disabled'}"></td>
+                        <td class="align-middle text-end">
+                            <a th:if="${plant.isActive == 0}" th:href="@{/admin_plant/activate(id=${plant.id})}" class="btn me-5 navigation-button" style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Activate</a>
+                            <a th:if="${plant.isActive == 1}" th:href="@{/admin_plant/disable(id=${plant.id})}" class="btn me-5 navigation-button" style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Disable</a>
+
+                            <a th:href="@{/admin_plant/delete(id=${plant.id})}" class="btn me-5 navigation-button" style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Delete</a>
+                        </td>
+                    </tr>
+>>>>>>> 0c2d59c86ec3ec0d06b5ee7c741be667c946b8fb
             </table>
         </div>
     </div>

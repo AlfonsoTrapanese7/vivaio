@@ -61,6 +61,11 @@ public class AccessoryServiceImpl implements AccessoryService {
 
     }
 
+    @Override
+    public void deleteAccessoryById(Integer id) {
+       accessoryRepository.deleteById(id);
+    }
+
 
 
 }

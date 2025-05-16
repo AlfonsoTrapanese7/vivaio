@@ -60,6 +60,13 @@ public class AdminPlantController {
         nurseryService.activateDisableNursery(id, "disable");
         return "redirect:/admin_plant";
     }
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam(required = true) Integer id) {
+        nurseryService.deleteNurseryById(id);
+        return "redirect:/admin_plant";
+    }
+    
     
     @GetMapping("/logout")
     public String logout(HttpSession session) {

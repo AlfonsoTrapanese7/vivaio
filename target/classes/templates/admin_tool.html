@@ -82,8 +82,11 @@
                         <td class="align-middle" th:if="${tool.dateOfRestock == null}">Date of restock unassigned</td>
                         <td class="align-middle text-center" th:text="${tool.isActive == 1 ? 'Active' : 'Disabled'}"></td>
                         <td class="align-middle text-end">
+                            
                             <a th:href="@{/admin_tool/activate(id=${tool.id})}" th:if="${tool.isActive == 0}" class="btn me-5 navigation-button" style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Activate</a>
                             <a th:href="@{/admin_tool/disable(id=${tool.id})}" th:if="${tool.isActive == 1}" class="btn me-5 navigation-button" style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Disable</a>
+
+                            <a th:href="@{/admin_tool/delete(id=${tool.id})}" class="btn me-5 navigation-button" style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Delete</a>
                         </td>
                     </tr>
             </table>
