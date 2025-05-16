@@ -114,8 +114,10 @@
                 <div class="navbar-nav ms-auto ">
                     <a th:href="@{/}" class="btn me-5 navigation-button"
                         style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742); font-weight: bold;">Home</a>
-                    <a th:href="@{/admin_plant}" class="btn me-5 navigation-button"
-                        style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Edit Plants
+                    <a th:href="@{/admin_page}" class="btn me-5 navigation-button"
+                        style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742); font-weight: bold;">Home Admin</a>
+                    <a th:href="@{/plant_catalogue}" class="btn me-5 navigation-button"
+                        style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">User Plants
                         catalogue</a>
                     <a th:href="@{/admin_tool}" class="btn me-5 navigation-button"
                         style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Edit Tools
@@ -126,8 +128,9 @@
             </div>
         </nav>
     </header>
-    
-    <div class="row justify-content-center mt-4">
+
+<!-- catalogo piante -->
+   <div class="row justify-content-center mt-4">
             <div class="col-10">
                 <h4 class="text-center">Plant Catalogue</h4>
                 <table class="table tabel-striped">
@@ -149,6 +152,60 @@
             </table>
         </div>
     </div>
+
+    <!-- Form di inserimento -->
+    <div class="row justify-content-center mt-4">
+        <div class="col-lg-4 border p-4">
+            <h4 class="text-center">Insert a new plant in catalogue</h4>
+            <form th:object="${nursery}" method="post" enctype="multipart/form-data">
+
+                <input type="text" placeholder="Name" class="form-control mt-3" th:field="*{name}" required>
+                <small class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
+
+                <input type="number" step="any" placeholder="Price" class="form-control mt-3" th:field="*{price}" required>
+                
+
+                <textarea th:field="*{description}" placeholder="Description" class="form-control mt-3" required></textarea>
+
+                <input type="text" placeholder="Color" class="form-control mt-3" th:field="*{color}">
+                <small class="text-danger" th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></small>
+
+                <input type="file" name="photography" placeholder="Plant photo" class="form-control mt-3">
+
+                <input type="number" placeholder="Quantity" class="form-control mt-3" th:field="*{quantity}" required>
+                
+
+                <input type="date" class="form-control mt-3" th:field="*{dateOfRestock}">
+                
+                <input type="text" placeholder="Origin" class="form-control mt-3" th:field="*{origin}" required>
+                <small class="text-danger" th:if="${#fields.hasErrors('origin')}" th:errors="*{origin}"></small>
+
+                <input type="text" placeholder="Season" class="form-control mt-3" th:field="*{season}" required>
+                <small class="text-danger" th:if="${#fields.hasErrors('season')}" th:errors="*{season}"></small>
+
+                <input type="text" placeholder="Watering" class="form-control mt-3" th:field="*{watering}">
+                <small class="text-danger" th:if="${#fields.hasErrors('watering')}" th:errors="*{watering}"></small>
+
+                <input type="hidden" th:field="*{isActive}" th:value="0">
+
+                <select class="form-select mt-3" th:field="*{type.id}" required>
+                    <option disabled selected value="">— Select plant type —</option>
+                    <option th:each="singleType : ${types}" th:value="${singleType.id}" th:text="${singleType.plantType}"></option>
+                </select>
+
+                <select class="form-select mt-3" th:field="*{location.id}" required>
+                    <option disabled selected value="">— Select plant location —</option>
+                    <option th:each="singleLocation : ${locations}" th:value="${singleLocation.id}" th:text="${singleLocation.plantLocation}"></option>
+                </select>
+
+                <div class="text-center mt-4">
+                    <input type="submit" value="Confirm" class="btn btn-success">
+                </div>
+
+            </form>
+        </div>
+    </div>
+    
 
     <!-- Footer -->
     <footer style="background-color:rgba(234,225,210,255); color:rgba(59, 26, 9, 0.742);">

@@ -59,31 +59,63 @@
 
     <!-- Details -->
     <div class="row mt-4 justify-content-center">
-        <div class="col-lg-4">
+        <div class="col-lg-4 mt-4 img-dettaglio">
             <img th:if="${plant.photo != null}" th:src="@{${plant.photo}}" alt="Plant Image"
-                class="img-fluid rounded-start" style="max-width: 100%; height: auto;">
+                class="img-fluid rounded foto-dettaglio">
             <img th:if="${plant.photo == null}" th:src="@{images/02.jpg}" alt="Plant Image"
-                class="img-fluid rounded-start" style="max-width: 100%; height: auto;">
+                class="img-fluid rounded foto-dettaglio">
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 colonnadue">
 
-            <ul class="list-group mt-4">
+            <ul class="list-group mt-4 scheda-tecnica">
                 <li class="list-group-item">
-                    <h3 th:text="${plant.name}"></h3>
+                    <h3 th:text="${plant.name}" class="titolo-dettaglio"></h3>
                 </li>
-                <li class="list-group-item"
-                    th:text="|Price: ${#numbers.formatDecimal(plant.price,0,'POINT',2,'COMMA')} Euro|"></li>
-                <li th:if="${plant.color != null}" class="list-group-item" th:text="|Color: ${plant.color}|"></li>
-                <li class="list-group-item" th:text="|Quantity: ${plant.quantity}|"></li>
-                <li th:if="${plant.dateOfRestock != null}" class="list-group-item"
-                    th:text="|Date of Restock: ${#temporals.format(plant.dateOfRestock, 'dd/MM/yyyy')}|"></li>
-                <li class="list-group-item" th:text="|Origin: ${plant.origin}|"></li>
-                <li class="list-group-item" th:text="|Season: ${plant.season}|"></li>
-                <li th:if="${plant.watering != null}" class="list-group-item" th:text="|Watering:  ${plant.watering}|">
+                <li class="list-group-item descrizione" th:text="${plant.description}"></li>
+                <li class="list-group-item">
+                    <span class="label">Price:</span>
+                    <span th:text="${#numbers.formatDecimal(plant.price,0,'POINT',2,'COMMA')}"></span> Euro
                 </li>
-                <li class="list-group-item" th:text="|Plant Type:  ${plant.type.plantType}|"></li>
-                <li class="list-group-item" th:text="|Plant Location:  ${plant.location.plantLocation}|"></li>
-                <li class="list-group-item" th:text="${plant.description}"></li>
+
+                <li th:if="${plant.color != null}" class="list-group-item">
+                    <span class="label">Color:</span>
+                    <span th:text="${plant.color}"></span>
+                </li>
+                <li class="list-group-item">
+                    <span class="label">Quantity:</span>
+                    <span th:text="${plant.quantity}"></span>
+                </li>
+
+                <li th:if="${plant.dateOfRestock != null}" class="list-group-item">
+                    <span class="label">Date of Restock:</span>
+                    <span th:text="${#temporals.format(plant.dateOfRestock, 'dd/MM/yyyy')}"></span>
+                </li>
+
+                <li class="list-group-item">
+                    <span class="label">Origin:</span>
+                    <span th:text="${plant.origin}"></span>
+                </li>
+
+                <li class="list-group-item">
+                    <span class="label">Season:</span>
+                    <span th:text="${plant.season}"></span>
+                </li>
+
+                <li th:if="${plant.watering != null}" class="list-group-item">
+                    <span class="label">Watering:</span>
+                    <span th:text="${plant.watering}"></span>
+                </li>
+
+                <li class="list-group-item">
+                    <span class="label">Plant Type:</span>
+                    <span th:text="${plant.type.plantType}"></span>
+                </li>
+
+                <li class="list-group-item">
+                    <span class="label">Plant Location:</span>
+                    <span th:text="${plant.location.plantLocation}"></span>
+                </li>
+                
             </ul>
         </div>
     </div>
@@ -131,7 +163,7 @@
                     <div id="map" class="map-container"></div>
                 </div>
             </div>
-        </div> 
+        </div>
         <a th:href=" @{/admin_login}" class="adm">admin</a>
     </footer>
 
