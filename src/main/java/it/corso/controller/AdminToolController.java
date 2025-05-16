@@ -63,12 +63,13 @@ public class AdminToolController {
     @PostMapping
     public String accessoryForm(@Valid @ModelAttribute Accessory accesory, BindingResult result, @RequestParam MultipartFile photography, Model model) {
         if(result.hasErrors()){
-        Accessory accessoryf = new Accessory();
-        model.addAttribute("accesory", accessoryf);
-        List<Accessory> tools = accessoryService.getAllAccessory();
-        List<Category> categories = accessoryService.getAllCategory();
-        model.addAttribute("tools", tools);
-        model.addAttribute("categories", categories);
+            result.getFieldErrors().forEach(e -> System.out.println(e.getField() + " -> " + e.getDefaultMessage()));
+            Accessory accessoryf = new Accessory();
+            model.addAttribute("accessory", accessoryf);
+            List<Accessory> tools = accessoryService.getAllAccessory();
+            List<Category> categories = accessoryService.getAllCategory();
+            model.addAttribute("tools", tools);
+            model.addAttribute("categories", categories);
             return "admin_tool";
         }
         accessoryService.saveAccessoryAndPhoto(accesory, photography);
