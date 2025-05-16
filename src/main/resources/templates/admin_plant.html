@@ -82,7 +82,7 @@
                     <th>Date of Restock</th>
                     <th>Status</th>
                     <th>Buttons</th>
-                    
+
                 </tr>
                 <tr th:each="plant : ${plants}">
                     <td class="text-center">
@@ -103,18 +103,18 @@
                             style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Activate</a>
                         <a th:if="${plant.isActive == 1}" th:href="@{/admin_plant/disable(id=${plant.id})}"
                             class="btn me-5 navigation-button"
-                            style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Disable</a>
-                            <a th:href="@{/admin_plant/delete(id=${plant.id})}" class="btn me-5 navigation-button" style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Delete</a>
+                            style="background-color: rgba(234, 225, 210, 255); color: rgba(59, 26, 9, 0.9); box-shadow:-5px 5px 0px 0px rgba(59, 26, 9, 0.742); border: 2px solid rgba(175, 111, 80, 0.742);font-weight: bold;">Disable</a>
+                        <a th:href="@{/admin_plant/delete(id=${plant.id})}" class="btn me-5 navigation-button"
+                            style="background-color: #b02424; color:rgb(255, 255, 255);font-weight: bold;box-shadow:-5px 5px 0px 0px #651515; border: 2px solid #b02424;">Delete</a>
                     </td>
                 </tr>
-        
             </table>
         </div>
     </div>
 
     <!-- Form di inserimento -->
     <div class="row justify-content-center mt-4">
-        <div class="col-lg-4 border p-4">
+        <div class="col-lg-4 p-4 cornice-form">
 
             <form th:object="${nursery}" method="post" enctype="multipart/form-data">
                 <h4 class="text-center">Insert a new plant in catalogue</h4>
@@ -126,7 +126,7 @@
                     th:value="${price != 0 ? price : ''}" required>
 
 
-                <textarea th:field="*{description}" placeholder="Description" class="form-control mt-3"
+                <textarea th:field="*{description}" placeholder="Description" class="form-control mt-3" style="resize: none;";
                     required></textarea>
 
                 <input type="text" placeholder="Color" class="form-control mt-3" th:field="*{color}">
