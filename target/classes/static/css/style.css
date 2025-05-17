@@ -35,6 +35,8 @@ header {
     object-fit: cover;
     width: 100%;
     height: auto;
+    border: 1px solid black;
+    border-radius: 10px;
 }
 
 h5 {
@@ -133,7 +135,7 @@ form .navigation-button:hover {
 .navigation-button-review:hover {
     background-color: #77827b;
     color: #bacac0;
-    transform: translate(5px, -5px);   
+    transform: translate(5px, -5px);
 }
 
 .map-container {
@@ -334,10 +336,13 @@ input[type="date"]:not(:focus):invalid::before {
 }
 
 table {
-    border-collapse: separate; /* Necessario per applicare border-radius */
-  border-spacing: 0; /* Rimuove lo spazio tra le celle */
-  border-radius: 20px;
-  overflow: hidden; /* Necessario per evitare che il contenuto esca fuori dai bordi */
+    border-collapse: separate;
+    /* Necessario per applicare border-radius */
+    border-spacing: 0;
+    /* Rimuove lo spazio tra le celle */
+    border-radius: 20px;
+    overflow: hidden;
+    /* Necessario per evitare che il contenuto esca fuori dai bordi */
 }
 
 .cornice-form {
