@@ -35,8 +35,6 @@ header {
     object-fit: cover;
     width: 100%;
     height: auto;
-    border: 1px solid black;
-    border-radius: 10px;
 }
 
 h5 {
@@ -254,8 +252,7 @@ h2 {
     /*larghezza massima pari alla larghezza del div (100% del contenitore*/
     max-height: 100%;
     /*altezza massima pari all'altezza del div*/
-    transition: transform 1s ease;
-    border: 1px solid black;
+    transition: transform 0.3s ease;
 }
 
 .foto-dettaglio:hover {
@@ -348,11 +345,4 @@ table {
 .cornice-form {
     border: 3px solid white;
     margin-bottom: 3%;
-    border-radius: 10px;
-    background-color: rgba(255,255,255,0.500);
-
-}
-
-.form-control{
-    border: 1px solid black;
 }
