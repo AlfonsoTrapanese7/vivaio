@@ -74,7 +74,7 @@
                 <li class="list-group-item descrizione" th:text="${plant.description}"></li>
                 <li class="list-group-item">
                     <span class="label">Price:</span>
-                    <span th:text="${#numbers.formatDecimal(plant.price,0,'POINT',2,'COMMA')}"></span> Euro
+                    <span th:text="${#numbers.formatDecimal(plant.price,0,'POINT',2,'COMMA')}"></span> €
                 </li>
 
                 <li th:if="${plant.color != null}" class="list-group-item">
