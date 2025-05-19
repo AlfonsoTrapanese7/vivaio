@@ -14,6 +14,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    overflow-x: hidden;
 }
 
 header {
@@ -35,6 +36,8 @@ header {
     object-fit: cover;
     width: 100%;
     height: auto;
+    border: 1px solid black;
+    border-radius: 10px;
 }
 
 h5 {
@@ -133,7 +136,7 @@ form .navigation-button:hover {
 .navigation-button-review:hover {
     background-color: #77827b;
     color: #bacac0;
-    transform: translate(5px, -5px);   
+    transform: translate(5px, -5px);
 }
 
 .map-container {
@@ -225,7 +228,8 @@ h2 {
 }
 
 .scheda-tecnica {
-    margin-bottom: 15%;
+    margin-bottom: 10%;
+    margin-top: 10%;
     background-color: #f3f1e9;
     border: 3px solid rgb(175, 188, 200);
     border-radius: 20px;
@@ -236,7 +240,6 @@ h2 {
 
 .img-dettaglio {
     width: 40%;
-    padding-top: 25px;
 }
 
 .foto-dettaglio {
@@ -253,10 +256,28 @@ h2 {
     max-height: 100%;
     /*altezza massima pari all'altezza del div*/
     transition: transform 0.3s ease;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid black;
+
+
+}
+
+.row.justify-content-center {
+    display: flex;
+    align-items: center;
+}
+
+
+.row.justify-content-center>div {
+    display: flex;
+    flex-direction: column;
 }
 
 .foto-dettaglio:hover {
-    transform: scale(1.4);
+    transform: scale(1.2);
     z-index: 1;
     border: 2px solid black;
 }
@@ -333,13 +354,47 @@ input[type="date"]:not(:focus):invalid::before {
 }
 
 table {
-    border-collapse: separate; /* Necessario per applicare border-radius */
-  border-spacing: 0; /* Rimuove lo spazio tra le celle */
-  border-radius: 20px;
-  overflow: hidden; /* Necessario per evitare che il contenuto esca fuori dai bordi */
+    border-collapse: separate;
+    /* Necessario per applicare border-radius */
+    border-spacing: 0;
+    /* Rimuove lo spazio tra le celle */
+    border-radius: 20px;
+    overflow: hidden;
+    /* Necessario per evitare che il contenuto esca fuori dai bordi */
 }
 
 .cornice-form {
     border: 3px solid white;
     margin-bottom: 3%;
+    border-radius: 10px;
+    background-color: rgba(128, 128, 128, 0.33);
+}
+
+.card-img-top.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.img-catalogo {
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: auto;
+    /*centramento dell'immagine*/
+    min-width: auto;
+    /*larghezza minima pari alla larghezza dell'immagine*/
+    max-width: 100%;
+    /*larghezza massima pari alla larghezza del div (100% del contenitore*/
+    max-height: 100%;
+    /*altezza massima pari all'altezza del div*/
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid black;
+    border-radius: 10px;
 }
