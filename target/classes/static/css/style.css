@@ -248,13 +248,9 @@ h2 {
     right: 0px;
     bottom: 0px;
     margin: auto;
-    /*centramento dell'immagine*/
     min-width: auto;
-    /*larghezza minima pari alla larghezza dell'immagine*/
     max-width: 100%;
-    /*larghezza massima pari alla larghezza del div (100% del contenitore*/
     max-height: 100%;
-    /*altezza massima pari all'altezza del div*/
     transition: transform 0.3s ease;
     width: 100%;
     height: 400px;
@@ -355,12 +351,9 @@ input[type="date"]:not(:focus):invalid::before {
 
 table {
     border-collapse: separate;
-    /* Necessario per applicare border-radius */
     border-spacing: 0;
-    /* Rimuove lo spazio tra le celle */
     border-radius: 20px;
     overflow: hidden;
-    /* Necessario per evitare che il contenuto esca fuori dai bordi */
 }
 
 .cornice-form {
@@ -397,4 +390,8 @@ table {
     object-position: center;
     border: 1px solid black;
     border-radius: 10px;
+}
+
+.riga-foto {
+    width: 200px;
 }
