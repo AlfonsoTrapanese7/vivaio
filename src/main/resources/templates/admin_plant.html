@@ -86,8 +86,7 @@
                 </tr>
                 <tr th:each="plant : ${plants}">
                     <td class="text-center">
-                        <img th:src="@{${plant.photo == null ? 'images/02.jpg' : plant.photo}}" alt="Plant Image"
-                            style="max-height: 70px;">
+                        <img th:src="@{${plant.photo == null ? 'images/02.jpg' : plant.photo}}" alt="Plant Image" class="img-catalogo">
                     </td>
                     <td class="align-middle" th:text="${plant.name}"></td>
                     <td class="align-middle"
