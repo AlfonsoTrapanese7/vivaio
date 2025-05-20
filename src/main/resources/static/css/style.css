@@ -395,3 +395,7 @@ table {
 .riga-foto {
     width: 200px;
 }
+
+label {
+    font-weight: bold;
+}
