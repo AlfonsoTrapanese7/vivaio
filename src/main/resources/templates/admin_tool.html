@@ -68,12 +68,12 @@
         </nav>
     </header>
 
-        <div class="row justify-content-center mt-4">
-            <div class="col-10">
-                <h4 class="text-center">Tool Catalogue</h4>
-                <button onclick="scrollToFirstForm()">Go to<br> Form</button>
-                <table class="table tabel-striped">
-                    <tr>
+    <div class="row justify-content-center mt-4">
+        <div class="col-10">
+            <h4 class="text-center">Tool Catalogue</h4>
+            <button onclick="scrollToFirstForm()">Go to<br> Form</button>
+            <table class="table tabel-striped">
+                <tr>
                     <th class="riga-foto">Photo</th>
                     <th>Name</th>
                     <th>Price</th>
@@ -83,64 +83,97 @@
                     <th>Buttons</th>
 
                 </tr>
-                    <tr th:each="tool : ${tools}">
-                        <td class="text-center">
-                            <img th:src="@{${tool.photo == null ? 'images/02.jpg' : tool.photo}}" alt="Tool Image" class="img-catalogo">
-                        </td>
-                        <td class="align-middle" th:text="${tool.name}"></td>
-                        <td class="align-middle" th:text="|${#numbers.formatDecimal(tool.price,0,'POINT',2,'COMMA')} Euro|"></td>
-                        <td class="align-middle" th:text="${tool.quantity}"></td>
-                        <td class="align-middle" th:text="${#temporals.format(tool.dateOfRestock, 'dd/MM/yyyy')}" th:if="${tool.dateOfRestock != null}"></td>
-                        <td class="align-middle" th:if="${tool.dateOfRestock == null}">Date of restock unassigned</td>
-                        <td class="align-middle text-center" th:text="${tool.isActive == 1 ? 'Active' : 'Disabled'}"></td>
-                        <td class="align-middle text-end">
-                            
-                            <a th:href="@{/admin_tool/activate(id=${tool.id})}" th:if="${tool.isActive == 0}" class="btn me-5 navigation-button" style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Activate</a>
-                            <a th:href="@{/admin_tool/disable(id=${tool.id})}" th:if="${tool.isActive == 1}" class="btn me-5 navigation-button"  style="background-color: rgba(234, 225, 210, 255); color: rgba(59, 26, 9, 0.9); box-shadow:-5px 5px 0px 0px rgba(59, 26, 9, 0.742); border: 2px solid rgba(175, 111, 80, 0.742);font-weight: bold;">Disable</a>
+                <tr th:each="tool : ${tools}">
+                    <td class="text-center">
+                        <img th:src="@{${tool.photo == null ? 'images/02.jpg' : tool.photo}}" alt="Tool Image"
+                            class="img-catalogo">
+                    </td>
+                    <td class="align-middle" th:text="${tool.name}"></td>
+                    <td class="align-middle" th:text="|${#numbers.formatDecimal(tool.price,0,'POINT',2,'COMMA')} Euro|">
+                    </td>
+                    <td class="align-middle" th:text="${tool.quantity}"></td>
+                    <td class="align-middle" th:text="${#temporals.format(tool.dateOfRestock, 'dd/MM/yyyy')}"
+                        th:if="${tool.dateOfRestock != null}"></td>
+                    <td class="align-middle" th:if="${tool.dateOfRestock == null}">Date of restock unassigned</td>
+                    <td class="align-middle text-center" th:text="${tool.isActive == 1 ? 'Active' : 'Disabled'}"></td>
+                    <td class="align-middle text-end">
 
-                            <a th:href="@{/admin_tool/delete(id=${tool.id})}" class="btn me-5 navigation-button" style="background-color: #b02424; color:rgb(255, 255, 255);font-weight: bold;box-shadow:-5px 5px 0px 0px #651515; border: 2px solid #b02424;">Delete</a>
-                        </td>
-                    </tr>
+                        <a th:href="@{/admin_tool/activate(id=${tool.id})}" th:if="${tool.isActive == 0}"
+                            class="btn me-5 navigation-button"
+                            style="background-color: #bacac0; color:rgba(59, 26, 9, 0.742);font-weight: bold;">Activate</a>
+                        <a th:href="@{/admin_tool/disable(id=${tool.id})}" th:if="${tool.isActive == 1}"
+                            class="btn me-5 navigation-button"
+                            style="background-color: rgba(234, 225, 210, 255); color: rgba(59, 26, 9, 0.9); box-shadow:-5px 5px 0px 0px rgba(59, 26, 9, 0.742); border: 2px solid rgba(175, 111, 80, 0.742);font-weight: bold;">Disable</a>
+
+                        <a th:href="@{/admin_tool/delete(id=${tool.id})}" class="btn me-5 navigation-button"
+                            style="background-color: #b02424; color:rgb(255, 255, 255);font-weight: bold;box-shadow:-5px 5px 0px 0px #651515; border: 2px solid #b02424;">Delete</a>
+                    </td>
+                </tr>
             </table>
         </div>
     </div>
 
-<!-- Form di inserimento Accessory -->
+    <!-- Form di inserimento Accessory -->
     <div class="row justify-content-center mt-4">
-            <div class="col-lg-4 p-4 cornice-form">
-                
-                <form th:object="${accessory}" method="post" enctype="multipart/form-data">
-                    <h4 class="text-center">Insert a new Accessory in catalogue</h4>
+        <div class="col-lg-4 p-4 cornice-form">
 
-                    <input type="text" placeholder="Name" class="form-control mt-3" th:field="*{name}" required>
-                    <small class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
-                    <input type="number" min="0" step="any" th:field="*{price}" class="form-control mt-3" required>
-                    <textarea th:field="*{description}" placeholder="Description" required class="form-control mt-3" style="resize: none;"></textarea>
-                    <input type="text" placeholder="Color accessory" class="form-control mt-3" th:field="*{color}">
-                    <small class="text-danger" th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></small>
-                    <input type="file" name="photography" placeholder="Photo accessory" class="form-control mt-3" >
-                    <input type="number" min="0" class="form-control mt-3" th:field="*{quantity}" required>
-                    <input type="date" class="form-control mt-3" th:attr="min=${#dates.format(#dates.createNow(),'yyyy-MM-dd')}" th:field="*{dateOfRestock}">
-                    <input type="text" th:field="*{size}" placeholder="Size" class="form-control mt-3" required>
-                    <small class="text-danger" th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></small>
-                    <input type="text" th:field="*{brand}" placeholder="Brand" class="form-control mt-3" required>
-                    <small class="text-danger" th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"></small>
-                    <input type="text" th:field="*{material}" placeholder="Material" class="form-control mt-3">
-                    <small class="text-danger" th:if="${#fields.hasErrors('material')}" th:errors="*{material}"></small>
-                    <input type="hidden" th:field="*{isActive}" th:value="0" required>
-                    <!-- select -->
-                    <select class="form-select mt-3" th:field="*{category.id}" required>
-                        <option disabled selected value="">- Select tool category -</option>
-                        <option th:each="singleCategory : ${categories}" th:value="${singleCategory.id}" th:text="${singleCategory.accessoryCategory}"></option>
-                    </select>
-                    
-                    <div class="text-center mt-4">
-                        <input type="submit" value="Confirm" class="btn btn-success">
-                    </div>
+            <form th:object="${accessory}" method="post" enctype="multipart/form-data">
+                <h4 class="text-center">Insert a new Accessory in catalogue</h4>
 
-                </form>
-            </div>
+                <label for="name">Name</label>
+                <input type="text" id="name" class="form-control mt-1" th:field="*{name}" required>
+                <small class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
+
+                <label for="price" class="mt-3">Price</label>
+                <input type="number" id="price" min="0" step="any" class="form-control mt-1" th:field="*{price}"
+                    required>
+
+                <label for="description" class="mt-3">Description</label>
+                <textarea id="description" class="form-control mt-1" th:field="*{description}" style="resize: none;"
+                    required></textarea>
+
+                <label for="color" class="mt-3">Color</label>
+                <input type="text" id="color" class="form-control mt-1" th:field="*{color}">
+                <small class="text-danger" th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></small>
+
+                <label for="photography" class="mt-3">Photo</label>
+                <input type="file" id="photography" name="photography" class="form-control mt-1">
+
+                <label for="quantity" class="mt-3">Quantity</label>
+                <input type="number" id="quantity" min="0" class="form-control mt-1" th:field="*{quantity}" required>
+
+                <label for="dateOfRestock" class="mt-3">Date of Restock</label>
+                <input type="date" id="dateOfRestock" class="form-control mt-1"
+                    th:attr="min=${#dates.format(#dates.createNow(),'yyyy-MM-dd')}" th:field="*{dateOfRestock}">
+
+                <label for="size" class="mt-3">Size</label>
+                <input type="text" id="size" class="form-control mt-1" th:field="*{size}" required>
+                <small class="text-danger" th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></small>
+
+                <label for="brand" class="mt-3">Brand</label>
+                <input type="text" id="brand" class="form-control mt-1" th:field="*{brand}" required>
+                <small class="text-danger" th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"></small>
+
+                <label for="material" class="mt-3">Material</label>
+                <input type="text" id="material" class="form-control mt-1" th:field="*{material}">
+                <small class="text-danger" th:if="${#fields.hasErrors('material')}" th:errors="*{material}"></small>
+
+                <input type="hidden" th:field="*{isActive}" th:value="0">
+
+                <label for="category" class="mt-3">Tool Category</label>
+                <select id="category" class="form-select mt-1" th:field="*{category.id}" required>
+                    <option disabled selected value="">- Select tool category -</option>
+                    <option th:each="singleCategory : ${categories}" th:value="${singleCategory.id}"
+                        th:text="${singleCategory.accessoryCategory}"></option>
+                </select>
+
+                <div class="text-center mt-4">
+                    <input type="submit" value="Confirm" class="btn btn-success">
+                </div>
+            </form>
+
         </div>
+    </div>
 
     <!-- Bootstrap JS and dependencies (optional, but recommended) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

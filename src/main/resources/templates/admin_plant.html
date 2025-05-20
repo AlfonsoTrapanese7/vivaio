@@ -86,7 +86,8 @@
                 </tr>
                 <tr th:each="plant : ${plants}">
                     <td class="text-center">
-                        <img th:src="@{${plant.photo == null ? 'images/02.jpg' : plant.photo}}" alt="Plant Image" class="img-catalogo">
+                        <img th:src="@{${plant.photo == null ? 'images/02.jpg' : plant.photo}}" alt="Plant Image"
+                            class="img-catalogo">
                     </td>
                     <td class="align-middle" th:text="${plant.name}"></td>
                     <td class="align-middle"
@@ -118,43 +119,55 @@
             <form th:object="${nursery}" method="post" enctype="multipart/form-data">
                 <h4 class="text-center">Insert a new plant in catalogue</h4>
 
-                <input type="text" placeholder="Name" class="form-control mt-3" th:field="*{name}" required>
+                <label for="name">Name</label>
+                <input type="text" id="name" class="form-control mt-1" th:field="*{name}" required>
                 <small class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
 
-                <input type="number" min="0" step="any" th:field="*{price}" class="form-control mt-3" required>
+                <label for="price" class="mt-3">Price</label>
+                <input type="number" id="price" min="0" step="any" class="form-control mt-1" th:field="*{price}"
+                    required>
 
-
-                <textarea th:field="*{description}" placeholder="Description" class="form-control mt-3" style="resize: none;";
+                <label for="description" class="mt-3">Description</label>
+                <textarea id="description" class="form-control mt-1" th:field="*{description}" style="resize: none;"
                     required></textarea>
 
-                <input type="text" placeholder="Color" class="form-control mt-3" th:field="*{color}">
+                <label for="color" class="mt-3">Color</label>
+                <input type="text" id="color" class="form-control mt-1" th:field="*{color}">
                 <small class="text-danger" th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></small>
 
-                <input type="file" name="photography" placeholder="Plant photo" class="form-control mt-3">
+                <label for="photography" class="mt-3">Plant photo</label>
+                <input type="file" id="photography" name="photography" class="form-control mt-1">
 
-                <input type="number" min="0" class="form-control mt-3" th:field="*{quantity}" required>
+                <label for="quantity" class="mt-3">Quantity</label>
+                <input type="number" id="quantity" min="0" class="form-control mt-1" th:field="*{quantity}" required>
 
+                <label for="dateOfRestock" class="mt-3">Date of Restock</label>
+                <input type="date" id="dateOfRestock" class="form-control mt-1"
+                    th:attr="min=${#dates.format(#dates.createNow(),'yyyy-MM-dd')}" th:field="*{dateOfRestock}">
 
-                <input type="date" th:attr="min=${#dates.format(#dates.createNow(),'yyyy-MM-dd')}" class="form-control mt-3" th:field="*{dateOfRestock}">
-
-                <input type="text" placeholder="Origin" class="form-control mt-3" th:field="*{origin}" required>
+                <label for="origin" class="mt-3">Origin</label>
+                <input type="text" id="origin" class="form-control mt-1" th:field="*{origin}" required>
                 <small class="text-danger" th:if="${#fields.hasErrors('origin')}" th:errors="*{origin}"></small>
 
-                <input type="text" placeholder="Season" class="form-control mt-3" th:field="*{season}" required>
+                <label for="season" class="mt-3">Season</label>
+                <input type="text" id="season" class="form-control mt-1" th:field="*{season}" required>
                 <small class="text-danger" th:if="${#fields.hasErrors('season')}" th:errors="*{season}"></small>
 
-                <input type="text" placeholder="Watering" class="form-control mt-3" th:field="*{watering}">
+                <label for="watering" class="mt-3">Watering</label>
+                <input type="text" id="watering" class="form-control mt-1" th:field="*{watering}">
                 <small class="text-danger" th:if="${#fields.hasErrors('watering')}" th:errors="*{watering}"></small>
 
                 <input type="hidden" th:field="*{isActive}" th:value="0">
 
-                <select class="form-select mt-3" th:field="*{type.id}" required>
+                <label for="type" class="mt-3">Plant Type</label>
+                <select id="type" class="form-select mt-1" th:field="*{type.id}" required>
                     <option disabled selected value="">— Select plant type —</option>
                     <option th:each="singleType : ${types}" th:value="${singleType.id}"
                         th:text="${singleType.plantType}"></option>
                 </select>
 
-                <select class="form-select mt-3" th:field="*{location.id}" required>
+                <label for="location" class="mt-3">Plant Location</label>
+                <select id="location" class="form-select mt-1" th:field="*{location.id}" required>
                     <option disabled selected value="">— Select plant location —</option>
                     <option th:each="singleLocation : ${locations}" th:value="${singleLocation.id}"
                         th:text="${singleLocation.plantLocation}"></option>
@@ -163,8 +176,8 @@
                 <div class="text-center mt-4">
                     <input type="submit" value="Confirm" class="btn btn-success">
                 </div>
-
             </form>
+
         </div>
     </div>
 
